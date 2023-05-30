@@ -32,7 +32,6 @@ function App() {
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
-            {/* <Route path="products/:whatProduct" element={<Products />} /> */}
             <Route path="products/:whatProduct" element={<Products />} />
 
             <Route
