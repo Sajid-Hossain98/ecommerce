@@ -15,9 +15,9 @@ const useFirestoreCollection = (collectionName) => {
       try {
         const collectionRef = collection(db, `${collectionName}`);
 
-        const q = query(collectionRef);
+        // const q = query(collectionRef);
 
-        const querySnap = await getDocs(q);
+        const querySnap = await getDocs(collectionRef);
         let list = [];
         querySnap.forEach((doc) => {
           return list.push({ id: doc.id, ...doc.data() });
@@ -26,8 +26,11 @@ const useFirestoreCollection = (collectionName) => {
         setIsLoading(false);
       } catch (error) {
         setIsError(error.message);
+        setIsLoading(false);
       }
     }
+
+    getCollection();
 
     return () => {
       getCollection();

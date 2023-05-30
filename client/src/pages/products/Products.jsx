@@ -60,38 +60,34 @@ const Products = () => {
           ))}
 
           <div className="products-list">
-            {productCollection.isError ? (
-              <div>{productCollection.isError}</div>
-            ) : (
-              productsFilteredByBrand?.map((product) => (
-                <Link to={`productDetails/${product.id}`} key={product.id}>
-                  <div className="image">
-                    <img src={product.imgUrls?.[0]} alt={product.productName} />
+            {productsFilteredByBrand?.map((product) => (
+              <Link to={`productDetails/${product.id}`} key={product.id}>
+                <div className="image">
+                  <img src={product.imgUrls?.[0]} alt={product.productName} />
+                </div>
+
+                <div className="content">
+                  <h3 className="productName">{product.productName}</h3>
+                  <div className="price">
+                    <span className="productPrice">
+                      {product.productPrice
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                      ৳
+                    </span>
+
+                    <span className="specialPrice">
+                      {product.specialPrice
+                        ?.toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                      ৳
+                    </span>
                   </div>
 
-                  <div className="content">
-                    <h3 className="productName">{product.productName}</h3>
-                    <div className="price">
-                      <span className="productPrice">
-                        {product.productPrice
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                        ৳
-                      </span>
-
-                      <span className="specialPrice">
-                        {product.specialPrice
-                          ?.toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                        ৳
-                      </span>
-                    </div>
-
-                    <span className="brandName">{product.brand}</span>
-                  </div>
-                </Link>
-              ))
-            )}
+                  <span className="brandName">{product.brand}</span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
