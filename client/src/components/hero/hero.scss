@@ -1,0 +1,216 @@
+@use '../../_variables' as *;
+
+.heroContainer {
+ width: 100vw;
+ background-color: $clr_primary_2;
+
+ .content {
+  width: 85%;
+  padding: .5rem 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+   width: calc(2rem + 4.5vmin);
+
+   img {
+    width: 100%;
+   }
+  }
+
+  .admin {
+   background-color: $orange;
+   border-radius: $light_border_radius;
+
+   a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    color: $black;
+    padding: .5rem 1rem;
+   }
+
+   a {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    color: $black;
+   }
+  }
+
+  .search {
+   display: flex;
+   align-items: center;
+   width: 30%;
+   position: relative;
+
+   input[type='text'] {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    padding: .5rem 1rem;
+    color: $black;
+    background-color: $white;
+    border-radius: $light_border_radius;
+    font-size: calc(2px + 2vmin);
+   }
+
+   .search-icon {
+    position: absolute;
+    right: 2%;
+    height: 100%;
+    cursor: pointer;
+
+    &:hover {
+     color: $grey;
+    }
+   }
+  }
+
+  .options {
+   display: flex;
+   align-items: center;
+   gap: 2rem;
+
+
+   li {
+    background-color: $white;
+    border-radius: $light_border_radius;
+    transition: $transition;
+
+    &:last-child {
+     background: none;
+     position: relative;
+     transition: all .2s linear;
+
+     &:hover {
+      background: none;
+     }
+
+     span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      background-color: $orange;
+      border-radius: 50%;
+      height: 1.6rem;
+      width: 1.6rem;
+      font-size: calc(2px + 1.8vmin);
+      overflow: hidden;
+     }
+    }
+
+    &:hover:last-child {
+     scale: .96;
+    }
+
+    &:hover {
+     background-color: $light-white;
+    }
+
+    a {
+     display: flex;
+     align-items: center;
+     gap: .3rem;
+     font-size: calc(2px + 1.5vmin);
+     padding: .5rem 1rem;
+     color: $black;
+    }
+   }
+
+   .userName {
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    color: $black;
+    padding: .5rem 1rem;
+    font-size: calc(2px + 1.5vmin);
+    cursor: pointer;
+    position: relative;
+
+    .userIconDiv {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     gap: .3rem;
+     position: absolute;
+     top: 100%;
+     right: 0%;
+     left: 0%;
+     z-index: 999;
+     background-color: $black;
+     border-radius: $light_border_radius;
+     overflow: hidden;
+     margin-top: .3rem;
+
+     a {
+      width: 100%;
+      background-color: $orange;
+      color: $black;
+
+      &:hover {
+       background-color: rgba($color: $orange, $alpha: 0.92);
+      }
+     }
+    }
+   }
+
+   .account {
+    @extend .userName;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0;
+    border-radius: $light_border_radius;
+    cursor: auto;
+
+    &:hover {
+     background-color: $white;
+    }
+
+    .nameIcon {
+     display: flex;
+     align-items: center;
+     gap: .2rem;
+    }
+
+    .loginOrRegister {
+     display: flex;
+     align-items: center;
+     gap: .2rem;
+     font-size: calc(1px + 1vmin);
+
+     a {
+      padding: .1rem .2rem;
+      font-size: calc(2px + 1.2vmin);
+
+      &:hover {
+       color: rgb(253, 165, 0);
+      }
+     }
+    }
+   }
+  }
+ }
+}
+
+.sticky {
+ position: sticky;
+ top: 0;
+ transition-property: all;
+ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+ transition-duration: 400ms;
+ z-index: 1;
+ // height: 20rem;
+}
+
+.hide {
+ top: -20rem;
+}

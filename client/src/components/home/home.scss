@@ -1,0 +1,84 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.home {
+  width: 100vw;
+  color: $black;
+
+  .home-container {
+    width: 85%;
+    margin: 2rem auto;
+
+    .heading-1 {
+      width: 100%;
+      color: $white;
+      background-color: $clr_grey_1;
+      border-radius: $light_border_radius;
+      padding: 0.5rem 0;
+
+      h2 {
+        text-align: center;
+        font-size: calc(2px + 1.5vmin);
+        font-weight: 500;
+      }
+    }
+
+    .shopByCategory {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+
+      ul {
+        margin-top: 2rem;
+        width: 100%;
+
+        a {
+          color: $black;
+
+          .iconAndLink {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.8rem;
+            background-color: $white;
+            padding: 1.5rem;
+            border-radius: $heavy_border_radius;
+            border: 1px solid $grey;
+
+            img {
+              height: 4rem;
+              width: 4rem;
+              transition: $transition;
+            }
+
+            li {
+              font-size: calc(2px + 1.2vmin);
+              font-weight: 500;
+            }
+
+            &:hover img {
+              scale: 1.05;
+            }
+          }
+        }
+      }
+    }
+
+    .heading-2 {
+      @extend .heading-1;
+      margin: 2rem 0;
+    }
+
+    .heading-3 {
+      @extend .heading-1;
+      margin: 2rem 0;
+    }
+
+    .heading-4 {
+      @extend .heading-1;
+      margin: 2rem 0;
+    }
+  }
+}
