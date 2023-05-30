@@ -32,6 +32,9 @@ const Products = () => {
       )
     : filteredProducts;
 
+  console.log(productCollection.data);
+  console.log(productCollection.isError && error.message);
+
   return (
     <>
       {productCollection.isLoading && <Loader />}

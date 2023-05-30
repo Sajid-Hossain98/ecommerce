@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, serverTimestamp } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// Your web app's Firebase configuration
+// web app's Firebase configuration
 export const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_APIKEY,
   authDomain: import.meta.env.VITE_APP_AUTHDOMAIN,
