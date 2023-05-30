@@ -3,6 +3,9 @@ import { Link, useParams, useSearchParams } from "react-router-dom";
 import useFirestoreCollection from "../../hooks/useFirestoreCollection";
 import { brands } from "../../assets/brands";
 import Loader from "../../components/loader/Loader";
+import { useEffect, useState } from "react";
+import { collection, getDocs, query } from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 const Products = () => {
   const params = useParams();
@@ -32,8 +35,32 @@ const Products = () => {
       )
     : filteredProducts;
 
-  console.log(productCollection.data);
-  console.log(productCollection.isError && error.message);
+  const [data3, setData3] = useState([]);
+
+  useEffect(() => {
+    async function getCollection() {
+      try {
+        const collectionRef = collection(db, "products");
+
+        const q = query(collectionRef);
+
+        const querySnap = await getDocs(q);
+        let list = [];
+        querySnap.forEach((doc) => {
+          return list.push({ id: doc.id, ...doc.data() });
+        });
+        setData3(list);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    return () => {
+      getCollection();
+    };
+  }, [Products, db]);
+
+  console.log(data3);
 
   return (
     <>
