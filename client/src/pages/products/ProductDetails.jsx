@@ -29,108 +29,104 @@ const ProductDetails = () => {
     <>
       {productCollection.isLoading && <Loader />}
 
-      {productCollection.isError ? (
-        <div>{productCollection.isError}</div>
-      ) : (
-        filteredProduct.map((product) => (
-          <div className="details-container" key={product.id}>
-            <div className="main-details">
-              <Swiper
-                slidesPerView={1}
-                navigation
-                pagination={{ type: "bullets" }}
-                effect="fade"
-                modules={[EffectFade]}
-                autoplay={{ delay: 3000 }}
-              >
-                {product.imgUrls.map((url, index) => (
-                  <SwiperSlide key={index}>
-                    <div>
-                      <img
-                        src={product.imgUrls[index]}
-                        alt={product.productName}
-                      />
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+      {filteredProduct.map((product) => (
+        <div className="details-container" key={product.id}>
+          <div className="main-details">
+            <Swiper
+              slidesPerView={1}
+              navigation
+              pagination={{ type: "bullets" }}
+              effect="fade"
+              modules={[EffectFade]}
+              autoplay={{ delay: 3000 }}
+            >
+              {product.imgUrls.map((url, index) => (
+                <SwiperSlide key={index}>
+                  <div>
+                    <img
+                      src={product.imgUrls[index]}
+                      alt={product.productName}
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
 
-              <div className="key-details">
-                <h3 className="heading">Key Descriptions</h3>
+            <div className="key-details">
+              <h3 className="heading">Key Descriptions</h3>
 
-                <ul className="details-list" key={product.id}>
-                  <h4 className="name">
-                    {product.productName} {product.productModel}
-                  </h4>
-                  <li>
-                    <h5>Product Price</h5>
-                    <span>
-                      {product.productPrice
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                      ৳
-                    </span>
-                  </li>
-                  <li>
-                    <h5>Special Price</h5>
-                    <span>
-                      {product.specialPrice
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                      ৳
-                    </span>
-                  </li>
-                  <li>
-                    <h5>Product ID</h5>
-                    <span>{product.productId}</span>
-                  </li>
-                  <li>
-                    <h5>Brand</h5>
-                    <span>{product.brand}</span>
-                  </li>
-                  <li>
-                    <h5>Product Model</h5>
-                    <span>{product.productModel}</span>
-                  </li>
-                  <li>
-                    <h5>Warranty</h5>
-                    <span>{product.warranty}</span>
-                  </li>
-                </ul>
+              <ul className="details-list" key={product.id}>
+                <h4 className="name">
+                  {product.productName} {product.productModel}
+                </h4>
+                <li>
+                  <h5>Product Price</h5>
+                  <span>
+                    {product.productPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    ৳
+                  </span>
+                </li>
+                <li>
+                  <h5>Special Price</h5>
+                  <span>
+                    {product.specialPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    ৳
+                  </span>
+                </li>
+                <li>
+                  <h5>Product ID</h5>
+                  <span>{product.productId}</span>
+                </li>
+                <li>
+                  <h5>Brand</h5>
+                  <span>{product.brand}</span>
+                </li>
+                <li>
+                  <h5>Product Model</h5>
+                  <span>{product.productModel}</span>
+                </li>
+                <li>
+                  <h5>Warranty</h5>
+                  <span>{product.warranty}</span>
+                </li>
+              </ul>
 
-                <div className="quantity">
-                  <button
-                    onClick={(e) =>
-                      setQuantity((prev) => (prev === 1 ? 1 : prev - 1))
-                    }
-                  >
-                    -
-                  </button>
-                  <p>{quantity}</p>
-                  <button onClick={(e) => setQuantity((prev) => prev + 1)}>
-                    +
-                  </button>
-                </div>
-                <button className="addToCart">
-                  <BiCartAdd style={{ color: "white" }} />
-                  Add to cart
+              <div className="quantity">
+                <button
+                  onClick={(e) =>
+                    setQuantity((prev) => (prev === 1 ? 1 : prev - 1))
+                  }
+                >
+                  -
+                </button>
+                <p>{quantity}</p>
+                <button onClick={(e) => setQuantity((prev) => prev + 1)}>
+                  +
                 </button>
               </div>
-            </div>
-            <div className="specifications">
-              <h6>Specifications</h6>
-              <ul className="specifications-list">
-                {product.detailsInputFields.map((details, index) => (
-                  <li key={index}>
-                    <span>{details.nameOfTheDetail}</span>
-                    <span>{details.detail}</span>
-                  </li>
-                ))}
-              </ul>
+              <button className="addToCart">
+                <BiCartAdd style={{ color: "white" }} />
+                Add to cart
+              </button>
             </div>
           </div>
-        ))
-      )}
+          <div className="specifications">
+            <h6>Specifications</h6>
+            <ul className="specifications-list">
+              {product.detailsInputFields.map((details, index) => (
+                <li key={index}>
+                  <span>{details.nameOfTheDetail}</span>
+                  <span>{details.detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
     </>
   );
 };
