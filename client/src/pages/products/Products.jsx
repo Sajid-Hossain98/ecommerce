@@ -47,6 +47,12 @@ const Products = () => {
                 <Link
                   to={`?brand=${brand.name.replace(/\s+/g, "-").toLowerCase()}`}
                   key={i}
+                  className={`brandsToFilter ${
+                    brandFilter ===
+                    brand.name.replace(/\s+/g, "-").toLowerCase()
+                      ? "selectedBrand"
+                      : ""
+                  }`}
                 >
                   {brand.name}
                 </Link>

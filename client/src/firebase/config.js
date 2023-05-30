@@ -5,12 +5,6 @@ import { getStorage } from "firebase/storage";
 
 // web app's Firebase configuration
 const firebaseConfig = {
-  // apiKey: "AIzaSyAiz_YmOLFdD1B2iXNkn7hvhT5UxLPIjLU",
-  // authDomain: "computersworldltd.firebaseapp.com",
-  // projectId: "computersworldltd",
-  // storageBucket: "computersworldltd.appspot.com",
-  // messagingSenderId: "187041138443",
-  // appId: "1:187041138443:web:39ba4f6cad9f88077e040e",
   apiKey: import.meta.env.VITE_APP_APIKEY,
   authDomain: import.meta.env.VITE_APP_AUTHDOMAIN,
   projectId: import.meta.env.VITE_APP_PROJECTID,
