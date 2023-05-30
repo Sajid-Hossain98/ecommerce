@@ -4,7 +4,7 @@ import { getFirestore, serverTimestamp } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 // web app's Firebase configuration
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAiz_YmOLFdD1B2iXNkn7hvhT5UxLPIjLU",
   authDomain: "computersworldltd.firebaseapp.com",
   projectId: "computersworldltd",
