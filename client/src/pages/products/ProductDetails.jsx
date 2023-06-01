@@ -13,11 +13,15 @@ import SwiperCore, {
 import "swiper/css/bundle";
 import { useState } from "react";
 import { BiCartAdd } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slice/cartSlice";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const detailParams = useParams();
   const productCollection = useFirestoreCollection("products");
+
+  const dispatch = useDispatch();
 
   SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -104,14 +108,40 @@ const ProductDetails = () => {
                   -
                 </button>
                 <p>{quantity}</p>
-                <button onClick={(e) => setQuantity((prev) => prev + 1)}>
+                <button
+                  onClick={(e) =>
+                    setQuantity((prev) => (prev === 5 ? 5 : prev + 1))
+                  }
+                >
                   +
                 </button>
               </div>
-              <button className="addToCart">
-                <BiCartAdd style={{ color: "white" }} />
-                Add to cart
-              </button>
+              <div className="orderOrCart">
+                <button
+                  className="addToCart"
+                  onClick={() =>
+                    dispatch(
+                      addToCart({
+                        id: product.id,
+                        title: product.productName,
+                        price: product.specialPrice
+                          ? product.specialPrice
+                          : product.productPrice,
+                        img: product.imgUrls[0],
+                        brand: product.brand,
+                        quantity: quantity,
+                      })
+                    )
+                  }
+                >
+                  <BiCartAdd style={{ color: "white" }} />
+                  Add to cart
+                </button>
+                <button className="buyNow">
+                  <BiCartAdd />
+                  Buy now
+                </button>
+              </div>
             </div>
           </div>
           <div className="specifications">

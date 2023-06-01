@@ -21,7 +21,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   REMOVE_ACTIVE_USER,
   SET_ACTIVE_USER,
-  selectEmail,
   selectIsLoggedIn,
   selectUserName,
 } from "../../redux/slice/authSlice";
@@ -29,25 +28,32 @@ import useFirestoreCollection from "../../hooks/useFirestoreCollection";
 import ExpandOnClick from "./ExpandOnClick";
 import { toast } from "react-toastify";
 import { useComponentHideAndShow } from "../../hooks/useComponentHideAndShow";
+import Cart from "../cart/Cart";
+import { selectCartProducts } from "../../redux/slice/cartSlice";
 
 const Hero = () => {
   // listening for scroll direction(up/down), if scrolling down then hiding the navbar and if scrolling up then showing the navbar
   const scrollDirection = useScrollDirection("down");
 
   const [open, setOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const [currentUserName, setCurrentUserName] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const usersName = useFirestoreCollection("users-name");
+  const userDataCollection = useFirestoreCollection("users-name");
 
   const userName = useSelector(selectUserName);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
+  const cartProducts = useSelector(selectCartProducts);
+
+  const { ref } = useComponentHideAndShow(setOpen);
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const filteredUser = usersName.data.filter(
+        const filteredUser = userDataCollection.data.filter(
           (data) => user.email === data.email
         );
 
@@ -66,7 +72,7 @@ const Hero = () => {
         dispatch(REMOVE_ACTIVE_USER());
       }
     });
-  }, [dispatch, currentUserName, usersName.data]);
+  }, [auth, dispatch, currentUserName, userDataCollection.data]);
 
   const logoutUser = () => {
     signOut(auth)
@@ -79,7 +85,22 @@ const Hero = () => {
       });
   };
 
-  const { ref } = useComponentHideAndShow(setOpen);
+  //the hook created for hiding and showing components didn't work so had to do it manually. This is done to hide  the cart component when the user click outside of the cart component
+  const cartRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!cartRef.current.contains(e.target)) {
+        setCartOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [cartRef, setOpen]);
 
   return (
     <>
@@ -162,15 +183,16 @@ const Hero = () => {
                 )}
               </li>
 
-              <li>
+              <li ref={cartRef} className="cart">
                 <IconContext.Provider
                   value={{ style: { color: "#FDFDFD", fontSize: "45px" } }}
                 >
-                  <Link>
+                  <Link onClick={() => setCartOpen(!cartOpen)}>
                     <FaCartArrowDown />
-                    <span>0</span>
+                    <span className="quantityCount">{cartProducts.length}</span>
                   </Link>
                 </IconContext.Provider>
+                {cartOpen && <Cart />}
               </li>
             </ul>
           </div>

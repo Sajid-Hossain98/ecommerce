@@ -20,7 +20,7 @@ export const authSlice = createSlice({
       state.userName = userName;
     },
 
-    REMOVE_ACTIVE_USER: (state, action) => {
+    REMOVE_ACTIVE_USER: (state) => {
       state.isLoggedIn = false;
       state.email = null;
       state.userName = null;

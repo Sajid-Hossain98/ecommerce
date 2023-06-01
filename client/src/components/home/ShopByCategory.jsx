@@ -17,9 +17,9 @@ const options = [
 
 const ShopByCategory = () => {
   return (
-    <div className="shopByCategory">
+    <ul className="shopByCategory">
       {options.map((option, index) => (
-        <ul key={index}>
+        <li key={index}>
           <Link
             to={`products/${option.label.replace(/\s+/g, "-").toLowerCase()}`}
           >
@@ -28,9 +28,9 @@ const ShopByCategory = () => {
               <li>{option.label}</li>
             </div>
           </Link>
-        </ul>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

@@ -31,6 +31,10 @@ const Register = () => {
     }));
   };
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const registerUser = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -40,7 +44,8 @@ const Register = () => {
         .then(() => {
           setIsLoading(false);
           toast.success("You have successfully registered!");
-          navigate("/");
+          navigate(-2);
+          refreshPage();
         })
         .catch((error) => {
           toast.error(

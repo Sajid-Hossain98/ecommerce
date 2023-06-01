@@ -1,79 +1,77 @@
-@use '../../_variables' as *;
+@use "../../_variables" as *;
 
 .navbarContainer {
- width: 85vw;
- display: flex;
- align-items: center;
- justify-content: space-evenly;
- gap: 1rem;
- height: calc(2rem + 3vmin);
- background-color: $clr_primary_1;
- margin: 1.2rem auto;
- border-radius: $light_border_radius;
-
-
-
- .navbar {
-  position: relative;
-  height: inherit;
-  width: 100%;
+  width: 85vw;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  height: calc(2rem + 3vmin);
+  background-color: $clr_primary_1;
+  margin: 1rem auto;
+  border-radius: $light_border_radius;
 
-  &:hover a {
-   color: $grey;
-  }
-
-  a {
-   color: $white;
-   font-size: calc(.5rem + 1.2vmin);
-   font-weight: 500;
-   height: 100%;
-   width: 100%;
-   display: grid;
-   place-items: center;
-  }
-
-  .navLinksContainer {
-   display: none;
-   position: absolute;
-
-   .navLinks {
+  .navbar {
+    position: relative;
+    height: inherit;
+    width: 100%;
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: .2rem;
-    background-color: $clr_primary_1;
-    padding: 1rem 2rem;
-    width: max-content;
+    align-items: center;
+    justify-content: center;
 
-    &::after {
-     content: '';
-     position: absolute;
-     background-color: $orange;
-     height: 3px;
-     width: 100%;
-     top: 0;
-     left: 0;
+    &:hover a {
+      color: $grey;
     }
 
     a {
-     padding: .4rem 0;
-     color: $white;
-     width: 100%;
-
-     &:hover {
-      color: $orange;
-     }
+      color: $white;
+      font-size: calc(0.5rem + 1.2vmin);
+      font-weight: 500;
+      height: 100%;
+      width: 100%;
+      display: grid;
+      place-items: center;
     }
-   }
-  }
 
-  &:hover .navLinksContainer {
-   display: block;
-   top: calc(1.8rem + 3vmin);
-   left: 0;
+    .navLinksContainer {
+      display: none;
+      position: absolute;
+
+      .navLinks {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.2rem;
+        background-color: $clr_primary_1;
+        padding: 1rem 2rem;
+        width: max-content;
+
+        &::after {
+          content: "";
+          position: absolute;
+          background-color: $orange;
+          height: 3px;
+          width: 100%;
+          top: 0;
+          left: 0;
+        }
+
+        a {
+          padding: 0.4rem 0;
+          color: $white;
+          width: 100%;
+
+          &:hover {
+            color: $orange;
+          }
+        }
+      }
+    }
+
+    &:hover .navLinksContainer {
+      display: block;
+      top: calc(1.8rem + 3vmin);
+      left: 0;
+    }
   }
- }
 }

@@ -1,8 +1,13 @@
 import "./products.scss";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import useFirestoreCollection from "../../hooks/useFirestoreCollection";
+import useFirestoreCollection, {
+  handleDelete,
+} from "../../hooks/useFirestoreCollection";
 import { brands } from "../../assets/brands";
 import Loader from "../../components/loader/Loader";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { useSelector } from "react-redux";
+import { selectEmail, selectIsLoggedIn } from "../../redux/slice/authSlice";
 
 const Products = () => {
   const params = useParams();
@@ -12,6 +17,11 @@ const Products = () => {
   const brandFilter = searchParams.get("brand");
 
   const productCollection = useFirestoreCollection("products");
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const email = useSelector(selectEmail);
+
+  const adminEmail = import.meta.env.VITE_APP_ADMINEMAIL;
 
   //filtering only those brands that match with the current product brands which we are getting through useParams()
   const filteredBrands = brands.filter((brand) => {
@@ -67,32 +77,42 @@ const Products = () => {
 
           <div className="products-list">
             {productsFilteredByBrand?.map((product) => (
-              <Link to={`productDetails/${product.id}`} key={product.id}>
-                <div className="image">
-                  <img src={product.imgUrls?.[0]} alt={product.productName} />
-                </div>
-
-                <div className="content">
-                  <h3 className="productName">{product.productName}</h3>
-                  <div className="price">
-                    <span className="productPrice">
-                      {product.productPrice
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                      ৳
-                    </span>
-
-                    <span className="specialPrice">
-                      {product.specialPrice
-                        ?.toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                      ৳
-                    </span>
+              <div className="product" key={product.id}>
+                <Link to={`productDetails/${product.id}`}>
+                  <div className="image">
+                    <img src={product.imgUrls?.[0]} alt={product.productName} />
                   </div>
 
-                  <span className="brandName">{product.brand}</span>
-                </div>
-              </Link>
+                  <div className="content">
+                    <h3 className="productName">{product.productName}</h3>
+                    <div className="price">
+                      <span className="productPrice">
+                        {product.productPrice
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        ৳
+                      </span>
+
+                      <span className="specialPrice">
+                        {product.specialPrice
+                          ?.toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        ৳
+                      </span>
+                    </div>
+
+                    <span className="brandName">{product.brand}</span>
+                  </div>
+                </Link>
+                {isLoggedIn && email === adminEmail && (
+                  <button
+                    className="deleteBtn"
+                    onClick={() => handleDelete(product.id)}
+                  >
+                    <RiDeleteBinLine />
+                  </button>
+                )}
+              </div>
             ))}
           </div>
         </div>

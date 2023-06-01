@@ -1,6 +1,17 @@
 {
-  "cSpell.ignoreWords": ["Avenir"],
+  "cSpell.ignoreWords": [
+    "Antec",
+    "Asus",
+    "Avenir",
+    "Deepcool",
+    "Fantech",
+    "Gskill",
+    "Maxgreen",
+    "Microlab",
+    "Rapoo"
+  ],
   "cSpell.words": [
+    "ADMINEMAIL",
     "APIKEY",
     "appspot",
     "AUTHDOMAIN",
@@ -13,7 +24,9 @@
     "MESSAGINGSENDERID",
     "oxanium",
     "Oxanium",
+    "persistor",
     "PROJECTID",
+    "reduxjs",
     "Ryzen",
     "saira",
     "Saira",

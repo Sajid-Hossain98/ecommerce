@@ -1,216 +1,394 @@
-@use '../../_variables' as *;
+@use "../../_variables" as *;
 
 .heroContainer {
- width: 100vw;
- background-color: $clr_primary_2;
+  width: 100vw;
+  background-color: $clr_primary_2;
 
- .content {
-  width: 85%;
-  padding: .5rem 0;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  .logo {
-   width: calc(2rem + 4.5vmin);
-
-   img {
-    width: 100%;
-   }
-  }
-
-  .admin {
-   background-color: $orange;
-   border-radius: $light_border_radius;
-
-   a {
-    height: 100%;
+  .content {
+    width: 85%;
+    padding: 0.5rem 0;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: .3rem;
-    color: $black;
-    padding: .5rem 1rem;
-   }
+    justify-content: space-between;
 
-   a {
-    display: flex;
-    align-items: center;
-    gap: .3rem;
-    color: $black;
-   }
-  }
+    .logo {
+      width: calc(2rem + 4.5vmin);
 
-  .search {
-   display: flex;
-   align-items: center;
-   width: 30%;
-   position: relative;
-
-   input[type='text'] {
-    width: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    padding: .5rem 1rem;
-    color: $black;
-    background-color: $white;
-    border-radius: $light_border_radius;
-    font-size: calc(2px + 2vmin);
-   }
-
-   .search-icon {
-    position: absolute;
-    right: 2%;
-    height: 100%;
-    cursor: pointer;
-
-    &:hover {
-     color: $grey;
+      img {
+        width: 100%;
+      }
     }
-   }
-  }
 
-  .options {
-   display: flex;
-   align-items: center;
-   gap: 2rem;
+    .admin {
+      background-color: $orange;
+      border-radius: $light_border_radius;
 
+      a {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        color: $black;
+        padding: 0.5rem 1rem;
+      }
 
-   li {
-    background-color: $white;
-    border-radius: $light_border_radius;
-    transition: $transition;
+      a {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        color: $black;
+      }
+    }
 
-    &:last-child {
-     background: none;
-     position: relative;
-     transition: all .2s linear;
-
-     &:hover {
-      background: none;
-     }
-
-     span {
+    .search {
       display: flex;
       align-items: center;
-      justify-content: center;
-      position: absolute;
-      top: 10%;
-      right: 5%;
-      background-color: $orange;
-      border-radius: 50%;
-      height: 1.6rem;
-      width: 1.6rem;
-      font-size: calc(2px + 1.8vmin);
-      overflow: hidden;
-     }
-    }
+      width: 30%;
+      position: relative;
 
-    &:hover:last-child {
-     scale: .96;
-    }
-
-    &:hover {
-     background-color: $light-white;
-    }
-
-    a {
-     display: flex;
-     align-items: center;
-     gap: .3rem;
-     font-size: calc(2px + 1.5vmin);
-     padding: .5rem 1rem;
-     color: $black;
-    }
-   }
-
-   .userName {
-    display: flex;
-    align-items: center;
-    gap: .2rem;
-    color: $black;
-    padding: .5rem 1rem;
-    font-size: calc(2px + 1.5vmin);
-    cursor: pointer;
-    position: relative;
-
-    .userIconDiv {
-     display: flex;
-     flex-direction: column;
-     align-items: flex-start;
-     gap: .3rem;
-     position: absolute;
-     top: 100%;
-     right: 0%;
-     left: 0%;
-     z-index: 999;
-     background-color: $black;
-     border-radius: $light_border_radius;
-     overflow: hidden;
-     margin-top: .3rem;
-
-     a {
-      width: 100%;
-      background-color: $orange;
-      color: $black;
-
-      &:hover {
-       background-color: rgba($color: $orange, $alpha: 0.92);
+      input[type="text"] {
+        width: 100%;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0.5rem 1rem;
+        color: $black;
+        background-color: $white;
+        border-radius: $light_border_radius;
+        font-size: calc(2px + 2vmin);
       }
-     }
-    }
-   }
 
-   .account {
-    @extend .userName;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0;
-    border-radius: $light_border_radius;
-    cursor: auto;
+      .search-icon {
+        position: absolute;
+        right: 2%;
+        height: 100%;
+        cursor: pointer;
 
-    &:hover {
-     background-color: $white;
-    }
-
-    .nameIcon {
-     display: flex;
-     align-items: center;
-     gap: .2rem;
-    }
-
-    .loginOrRegister {
-     display: flex;
-     align-items: center;
-     gap: .2rem;
-     font-size: calc(1px + 1vmin);
-
-     a {
-      padding: .1rem .2rem;
-      font-size: calc(2px + 1.2vmin);
-
-      &:hover {
-       color: rgb(253, 165, 0);
+        &:hover {
+          color: $grey;
+        }
       }
-     }
     }
-   }
+
+    .options {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      li {
+        background-color: $white;
+        border-radius: $light_border_radius;
+        transition: $transition;
+
+        &:last-child {
+          background: none;
+          position: relative;
+          transition: all 0.2s linear;
+
+          &:hover {
+            background: none;
+          }
+
+          .quantityCount {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            background-color: $orange;
+            border-radius: 50%;
+            height: 1.6rem;
+            width: 1.6rem;
+            font-size: calc(2px + 1.8vmin);
+            overflow: hidden;
+          }
+
+          &:hover a {
+            &:not(.loginForCart) {
+              scale: 0.96;
+            }
+          }
+        }
+
+        &:hover {
+          background-color: $light-white;
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          font-size: calc(2px + 1.5vmin);
+          padding: 0.5rem 1rem;
+          color: $black;
+          transition: $transition;
+        }
+      }
+
+      //!styles for the cart component
+      .cart {
+        color: $black;
+        position: relative;
+
+        .cart-container {
+          position: absolute;
+          top: 100%;
+          right: 0%;
+          width: 30vw;
+          max-height: 60vh;
+          padding: 1rem;
+          z-index: 999;
+          overflow-y: auto;
+          overflow-x: hidden;
+          background-color: $clr_grey_10;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+          &::-webkit-scrollbar {
+            width: 0.2rem;
+          }
+
+          &::-webkit-scrollbar-track {
+            background: $black;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: $orange;
+          }
+
+          h4 {
+            font-size: calc(5px + 2vmin);
+            font-weight: 600;
+            padding-bottom: 1rem;
+          }
+
+          .contentAndDeleteBtn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+
+            .cartContent {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+
+              .image {
+                img {
+                  width: 80px;
+                  height: 90px;
+                  object-fit: cover;
+                }
+              }
+
+              .details {
+                .product-title {
+                  font-size: calc(2px + 1.2vmin);
+                  font-weight: 500;
+                  text-align: justify;
+                }
+
+                .brand {
+                  font-size: calc(2px + 1vmin);
+                  color: $clr_grey_6;
+                }
+
+                .quantityPrice {
+                  font-size: calc(2px + 1vmin);
+                  font-weight: 500;
+                  color: $blue;
+                }
+              }
+            }
+
+            .deleteBtn {
+              button {
+                background: none;
+                border: none;
+                outline: 0;
+                color: #fa6969;
+                cursor: pointer;
+              }
+            }
+          }
+
+          .ifNoProduct {
+            display: grid;
+            place-items: center;
+            font-size: calc(2px + 2vmin);
+            font-style: italic;
+            padding: 2rem 0;
+          }
+
+          .orderAndResetBtn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            position: sticky;
+            width: 100%;
+            bottom: 0%;
+
+            .order {
+              width: 100%;
+
+              button {
+                background: none;
+                border: none;
+                outline: 0;
+                background-color: $blue;
+                width: 100%;
+                padding: 0.6rem 0;
+                color: $white;
+                font-size: calc(2px + 1.5vmin);
+                cursor: pointer;
+
+                &:not(.reset) {
+                  &:active {
+                    background-color: $clr_green_light;
+                    color: $black;
+                  }
+                }
+              }
+            }
+
+            .resetCart {
+              @extend .order;
+
+              button {
+                background-color: $clr_red_light;
+                font-size: calc(2px + 1vmin);
+                padding: 0.3rem 0;
+
+                &:active {
+                  background-color: $clr_red_dark;
+                }
+              }
+            }
+          }
+        }
+
+        .notLoggedInCart {
+          @extend .cart-container;
+          display: grid;
+          place-items: center;
+          padding: 3rem 0;
+
+          .notLogged {
+            font-size: calc(2px + 2vmin);
+            font-weight: 600;
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 1px;
+              width: 100%;
+              background-color: $clr_grey_4;
+            }
+          }
+
+          .loginPls {
+            display: flex;
+            align-items: center;
+
+            a {
+              color: $blue;
+              text-decoration: underline;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      .userName {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        color: $black;
+        padding: 0.5rem 1rem;
+        font-size: calc(2px + 1.5vmin);
+        cursor: pointer;
+        position: relative;
+
+        .userIconDiv {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.3rem;
+          position: absolute;
+          top: 100%;
+          right: 0%;
+          left: 0%;
+          z-index: 999;
+          background-color: $black;
+          border-radius: $light_border_radius;
+          overflow: hidden;
+          margin-top: 0.3rem;
+
+          a {
+            width: 100%;
+            background-color: $orange;
+            color: $black;
+
+            &:hover {
+              background-color: rgba($color: $orange, $alpha: 0.92);
+            }
+          }
+        }
+      }
+
+      .account {
+        @extend .userName;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0;
+        border-radius: $light_border_radius;
+        cursor: auto;
+
+        &:hover {
+          background-color: $white;
+        }
+
+        .nameIcon {
+          display: flex;
+          align-items: center;
+          gap: 0.2rem;
+        }
+
+        .loginOrRegister {
+          display: flex;
+          align-items: center;
+          gap: 0.2rem;
+          font-size: calc(1px + 1vmin);
+
+          a {
+            padding: 0.1rem 0.2rem;
+            font-size: calc(2px + 1.2vmin);
+
+            &:hover {
+              color: rgb(253, 165, 0);
+            }
+          }
+        }
+      }
+    }
   }
- }
 }
 
 .sticky {
- position: sticky;
- top: 0;
- transition-property: all;
- transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
- transition-duration: 400ms;
- z-index: 1;
- // height: 20rem;
+  position: sticky;
+  top: 0;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 400ms;
+  z-index: 1;
+  // height: 20rem;
 }
 
 .hide {
- top: -20rem;
+  top: -20rem;
 }
