@@ -95,4 +95,8 @@ export const brands = [
     brandsFor: "Gaming Chair",
     brands: [{ name: "Corsair" }, { name: "Razer" }, { name: "Fantech" }],
   },
+  {
+    brandsFor: "Custom Build",
+    brands: [{ name: "Intel" }, { name: "Ryzen" }],
+  },
 ];

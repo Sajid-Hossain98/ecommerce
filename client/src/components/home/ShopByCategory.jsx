@@ -25,7 +25,7 @@ const ShopByCategory = () => {
           >
             <div className="iconAndLink">
               <img src={option.icon} alt={option.label} />
-              <li>{option.label}</li>
+              <span>{option.label}</span>
             </div>
           </Link>
         </li>

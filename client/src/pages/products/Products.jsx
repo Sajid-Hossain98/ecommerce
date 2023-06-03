@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { selectEmail, selectIsLoggedIn } from "../../redux/slice/authSlice";
 
 const Products = () => {
-  const params = useParams();
+  let params = useParams();
 
   const [searchParams] = useSearchParams();
 
@@ -34,8 +34,8 @@ const Products = () => {
     (data) => data.whatProduct === params.whatProduct
   );
 
-  //here we are filtering products based on the brand that has been chosen by by the user in the product page.
-  const productsFilteredByBrand = brandFilter
+  //here we are filtering products based on the brand that has been chosen by the user in the product page.
+  let productsFilteredByBrand = brandFilter
     ? filteredProducts?.filter(
         (product) =>
           product.brand.replace(/\s+/g, "-").toLowerCase() === brandFilter

@@ -1,3 +1,4 @@
+import CustomBuilds from "./CustomBuilds";
 import ShopByCategory from "./ShopByCategory";
 import "./home.scss";
 
@@ -6,18 +7,26 @@ const Home = () => {
     <>
       <div className="home">
         <div className="home-container">
-          <div className="heading-1">
-            <h2>Shop by category</h2>
+          <div>
+            <h1 className="heading-1">Peripherals for your setup</h1>
+            <div>
+              <ShopByCategory />
+            </div>
           </div>
-          <ShopByCategory />
-          <div className="heading-2">
-            <h2>Intel Custom Build</h2>
+
+          <div className="custom-build">
+            <h1 className="heading-2">Intel Custom Build</h1>
+            <CustomBuilds whichCustomBuild="intel" />
           </div>
-          <div className="heading-3">
-            <h2>Ryzen Custom Build</h2>
+
+          <div className="custom-build">
+            <h1 className="heading-3">Ryzen Custom Build</h1>
+            <div>
+              <CustomBuilds whichCustomBuild="ryzen" />
+            </div>
           </div>
-          <div className="heading-4">
-            <h2>Popular Items</h2>
+          <div>
+            <h1 className="heading-4">Popular Items</h1>
           </div>
         </div>
       </div>
