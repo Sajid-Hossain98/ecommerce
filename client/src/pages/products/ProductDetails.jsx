@@ -41,12 +41,12 @@ const ProductDetails = () => {
               navigation
               pagination={{ type: "bullets" }}
               effect="fade"
-              modules={[EffectFade]}
+              modules={[EffectFade, Thumbs]}
               autoplay={{ delay: 3000 }}
             >
               {product.imgUrls.map((url, index) => (
                 <SwiperSlide key={index}>
-                  <div>
+                  <div className="image-swiper">
                     <img
                       src={product.imgUrls[index]}
                       alt={product.productName}

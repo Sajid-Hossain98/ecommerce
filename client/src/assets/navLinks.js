@@ -3,7 +3,7 @@ export const navLinks = [
     name: "Components",
     subMenu: true,
     subLinks: [
-      { name: "Processors", path: "" },
+      { name: "Processor", path: "" },
       { name: "Motherboard", path: "" },
       { name: "Ram", path: "" },
       { name: "HDD", path: "" },

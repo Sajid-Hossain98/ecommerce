@@ -242,25 +242,20 @@
       flex: 0.25;
       height: 100%;
       margin: auto 0;
-      width: 25rem;
+      width: 35rem;
       padding: 1rem 0;
-      height: 100%;
-      z-index: 0;
       background-color: $white;
+      z-index: 0;
 
-      .swiper-btn-next {
-        position: absolute;
-        right: -20%;
-      }
-
-      .swiper-btn-prev {
-        color: red;
-      }
-
-      img {
+      .image-swiper {
         height: 100%;
-        width: 100%;
-        object-fit: cover;
+        background-color: $white;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
       }
     }
 

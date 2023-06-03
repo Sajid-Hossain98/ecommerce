@@ -1,6 +1,6 @@
 export const brands = [
   {
-    brandsFor: "Processors",
+    brandsFor: "Processor",
     brands: [{ name: "AMD" }, { name: "Intel" }],
   },
   {
