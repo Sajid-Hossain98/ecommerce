@@ -22,6 +22,7 @@ import {
   REMOVE_ACTIVE_USER,
   SET_ACTIVE_USER,
   selectIsLoggedIn,
+  selectUserId,
   selectUserName,
 } from "../../redux/slice/authSlice";
 import useFirestoreCollection from "../../hooks/useFirestoreCollection";
@@ -46,9 +47,14 @@ const Hero = () => {
   const userName = useSelector(selectUserName);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
+  const { ref } = useComponentHideAndShow(setOpen);
+
+  const currentUserId = useSelector(selectUserId);
   const cartProducts = useSelector(selectCartProducts);
 
-  const { ref } = useComponentHideAndShow(setOpen);
+  const cartProductsForCurrentUser = cartProducts?.filter(
+    (products) => products.userId === currentUserId
+  );
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -189,7 +195,9 @@ const Hero = () => {
                 >
                   <Link onClick={() => setCartOpen(!cartOpen)}>
                     <FaCartArrowDown />
-                    <span className="quantityCount">{cartProducts.length}</span>
+                    <span className="quantityCount">
+                      {cartProductsForCurrentUser?.length}
+                    </span>
                   </Link>
                 </IconContext.Provider>
                 {cartOpen && <Cart />}

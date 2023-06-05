@@ -24,7 +24,7 @@ function App() {
           position="top-left"
           autoClose={4000}
           closeOnClick
-          theme="colored"
+          theme="dark"
         />
         <Routes>
           <Route path="/" element={<Layout />}>

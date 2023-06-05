@@ -89,14 +89,14 @@ const Products = () => {
                       <span className="productPrice">
                         {product.productPrice
                           .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          .replace(/(\d)(?=(\d{2})+\d$)/g, "$1,")}
                         ৳
                       </span>
 
                       <span className="specialPrice">
                         {product.specialPrice
                           ?.toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          .replace(/(\d)(?=(\d{2})+\d$)/g, "$1,")}
                         ৳
                       </span>
                     </div>

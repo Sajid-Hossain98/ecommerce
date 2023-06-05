@@ -74,13 +74,13 @@ const CustomBuilds = ({ whichCustomBuild }) => {
                     <p className="normalPrice">
                       {product.productPrice
                         .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        .replace(/(\d)(?=(\d{2})+\d$)/g, "$1,")}
                       <span>৳</span>
                     </p>
                     <p className="specialPrice">
                       {product.specialPrice
                         .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        .replace(/(\d)(?=(\d{2})+\d$)/g, "$1,")}
                       <span>৳</span>
                     </p>
                   </div>
@@ -91,7 +91,7 @@ const CustomBuilds = ({ whichCustomBuild }) => {
       </Slider>
 
       {productCollection.isLoading ? null : (
-        <Link to={`products/custom-build`} className="hi">
+        <Link to={`products/custom-build`}>
           <button className="viewMore">View More</button>
         </Link>
       )}

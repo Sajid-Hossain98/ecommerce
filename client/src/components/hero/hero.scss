@@ -230,6 +230,22 @@
             width: 100%;
             bottom: 0%;
 
+            .totalPrice {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              background-color: rgba($color: $orange, $alpha: 0.25);
+              padding: 0.2rem 1rem;
+
+              p {
+                font-weight: 700;
+              }
+              span {
+                font-weight: 600;
+              }
+            }
+
             .order {
               width: 100%;
 

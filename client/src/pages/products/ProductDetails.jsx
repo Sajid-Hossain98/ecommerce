@@ -1,5 +1,5 @@
 import "./products.scss";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useFirestoreCollection from "../../hooks/useFirestoreCollection";
 import Loader from "../../components/loader/Loader";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,13 +13,18 @@ import SwiperCore, {
 import "swiper/css/bundle";
 import { useState } from "react";
 import { BiCartAdd } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/slice/cartSlice";
+import { selectIsLoggedIn, selectUserId } from "../../redux/slice/authSlice";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const detailParams = useParams();
   const productCollection = useFirestoreCollection("products");
+
+  const userId = useSelector(selectUserId);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const dispatch = useDispatch();
 
@@ -117,30 +122,46 @@ const ProductDetails = () => {
                 </button>
               </div>
               <div className="orderOrCart">
-                <button
-                  className="addToCart"
-                  onClick={() =>
-                    dispatch(
-                      addToCart({
-                        id: product.id,
-                        title: product.productName,
-                        price: product.specialPrice
-                          ? product.specialPrice
-                          : product.productPrice,
-                        img: product.imgUrls[0],
-                        brand: product.brand,
-                        quantity: quantity,
-                      })
-                    )
-                  }
-                >
-                  <BiCartAdd style={{ color: "white" }} />
-                  Add to cart
-                </button>
-                <button className="buyNow">
-                  <BiCartAdd />
-                  Buy now
-                </button>
+                {isLoggedIn ? (
+                  <>
+                    <button
+                      className="addToCart"
+                      onClick={() => {
+                        dispatch(
+                          addToCart({
+                            id: product.id,
+                            userId: userId,
+                            title: product.productName,
+                            price: product.specialPrice
+                              ? product.specialPrice
+                              : product.productPrice,
+                            img: product.imgUrls[0],
+                            brand: product.brand,
+                            quantity: quantity,
+                          })
+                        );
+                        toast.success(
+                          `'${quantity}' ${product.productName} ${
+                            quantity > 1 ? "are" : "is"
+                          } added to your cart!`
+                        );
+                      }}
+                    >
+                      <BiCartAdd style={{ color: "white" }} />
+                      Add to cart
+                    </button>
+                    <button className="buyNow">
+                      <BiCartAdd />
+                      Buy now
+                    </button>
+                  </>
+                ) : (
+                  <Link to="/login">
+                    <button className="loginToAddToCart">
+                      Login to Add to cart / Buy
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
           </div>

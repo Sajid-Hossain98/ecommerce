@@ -6,15 +6,25 @@ import {
   resetCart,
   selectCartProducts,
 } from "../../redux/slice/cartSlice";
-import { selectIsLoggedIn } from "../../redux/slice/authSlice";
+import { selectIsLoggedIn, selectUserId } from "../../redux/slice/authSlice";
 import { Link } from "react-router-dom";
 import { BiLogInCircle } from "react-icons/bi";
 
 const Cart = () => {
   const cartProducts = useSelector(selectCartProducts);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const currentUserId = useSelector(selectUserId);
 
   const dispatch = useDispatch();
+
+  const cartProductsForCurrentUser = cartProducts.filter(
+    (products) => products.userId === currentUserId
+  );
+
+  const totalPrice = cartProductsForCurrentUser.reduce(
+    (total, product) => total + product.quantity * product.price,
+    0
+  );
 
   return (
     <>
@@ -22,8 +32,9 @@ const Cart = () => {
         <div className="cart-container">
           <h4>Products in your cart</h4>
 
-          {cartProducts && cartProducts.length > 0 ? (
-            cartProducts.map((product, index) => (
+          {cartProductsForCurrentUser &&
+          cartProductsForCurrentUser.length > 0 ? (
+            cartProductsForCurrentUser.map((product, index) => (
               <div className="contentAndDeleteBtn" key={index}>
                 <div className="cartContent">
                   <div className="image">
@@ -34,8 +45,11 @@ const Cart = () => {
                     <h3 className="product-title">{product.title}</h3>
                     <p className="brand">{product.brand}</p>
                     <p className="quantityPrice">
-                      {product.quantity} x {product.price} ={" "}
-                      {product.quantity * product.price}
+                      {product.quantity} x{" "}
+                      {product.price
+                        .toString()
+                        .replace(/(\d)(?=(\d{2})+\d$)/g, "$1,")}
+                      ৳ = {product.quantity * product.price}৳
                     </p>
                   </div>
                 </div>
@@ -56,11 +70,24 @@ const Cart = () => {
             </h6>
           )}
           <div className="orderAndResetBtn">
+            {cartProductsForCurrentUser.length > 0 && (
+              <div className="totalPrice">
+                <p>Total:</p>
+                <span>
+                  {totalPrice.toString().replace(/(\d)(?=(\d{2})+\d$)/g, "$1,")}
+                  ৳
+                </span>
+              </div>
+            )}
+
             <div className="order">
               <button>Order Now</button>
             </div>
             <div className="resetCart">
-              <button className="reset" onClick={() => dispatch(resetCart())}>
+              <button
+                className="reset"
+                onClick={() => dispatch(resetCart(currentUserId))}
+              >
                 Reset Cart
               </button>
             </div>
