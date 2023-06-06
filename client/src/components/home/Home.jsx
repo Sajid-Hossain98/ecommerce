@@ -25,9 +25,9 @@ const Home = () => {
               <CustomBuilds whichCustomBuild="ryzen" />
             </div>
           </div>
-          <div>
+          {/* <div>
             <h1 className="heading-4">Popular Items</h1>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

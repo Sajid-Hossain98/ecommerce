@@ -1,3 +1,4 @@
+import "./layout.scss";
 import { Outlet } from "react-router-dom";
 import Hero from "../components/hero/Hero";
 import Footer from "../components/footer/Footer";
@@ -5,10 +6,12 @@ import Footer from "../components/footer/Footer";
 const Layout = () => {
   return (
     <>
-      <Hero />
-      <main>
-        <Outlet />
-      </main>
+      <div className="layout">
+        <Hero />
+        <main>
+          <Outlet />
+        </main>
+      </div>
       <Footer />
     </>
   );
