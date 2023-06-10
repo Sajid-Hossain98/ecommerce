@@ -47,26 +47,107 @@
       width: 30%;
       position: relative;
 
-      input[type="text"] {
+      .search-field {
         width: 100%;
-        background: none;
-        border: none;
-        outline: none;
-        padding: 0.5rem 1rem;
-        color: $black;
-        background-color: $white;
-        border-radius: $light_border_radius;
-        font-size: calc(2px + 2vmin);
+
+        input[type="text"] {
+          width: 100%;
+          background: none;
+          border: none;
+          outline: none;
+          padding: 0.5rem 1rem;
+          color: $black;
+          background-color: $white;
+          border-radius: $light_border_radius;
+          font-size: calc(2px + 2vmin);
+        }
+
+        .search-icon {
+          position: absolute;
+          right: 2%;
+          height: 100%;
+          cursor: pointer;
+
+          &:hover {
+            color: $grey;
+          }
+        }
       }
 
-      .search-icon {
+      .search-output {
         position: absolute;
-        right: 2%;
-        height: 100%;
-        cursor: pointer;
+        top: 100%;
+        width: 100%;
+        left: 0%;
+        background-color: $clr_primary_2;
+        max-height: 50vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 999;
 
-        &:hover {
-          color: $grey;
+        &::-webkit-scrollbar {
+          width: 0.4rem;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: $black;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: $orange;
+        }
+
+        .searchedProduct {
+          color: $white;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 0.5rem 1rem;
+          border-bottom: 1px solid $clr_primary_3;
+
+          .searchImage {
+            img {
+              height: 90px;
+              width: 80px;
+              object-fit: cover;
+            }
+          }
+
+          .searchContent {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+
+            h4 {
+              font-size: calc(2px + 1.2vmin);
+              font-weight: 500;
+            }
+
+            .brand {
+              font-size: calc(1px + 1vmin);
+              background-color: $clr_green_light;
+              max-width: fit-content;
+              color: $black;
+              padding: 1px 2px;
+            }
+
+            .prices {
+              display: flex;
+              gap: 0.5rem;
+
+              p {
+                font-size: calc(1px + 1vmin);
+
+                &:nth-child(1) {
+                  text-decoration: line-through red;
+                }
+
+                &:nth-child(2) {
+                  text-decoration: underline greenyellow;
+                }
+              }
+            }
+          }
         }
       }
     }

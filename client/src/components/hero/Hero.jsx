@@ -31,6 +31,7 @@ import { toast } from "react-toastify";
 import { useComponentHideAndShow } from "../../hooks/useComponentHideAndShow";
 import Cart from "../cart/Cart";
 import { selectCartProducts } from "../../redux/slice/cartSlice";
+import Search from "../search/Search";
 
 const Hero = () => {
   // listening for scroll direction(up/down), if scrolling down then hiding the navbar and if scrolling up then showing the navbar
@@ -124,13 +125,11 @@ const Hero = () => {
               <Link to="/admin">
                 <GrUserAdmin />
                 <span>Admin</span>
-              </Link>{" "}
+              </Link>
             </div>
 
             <div className="search">
-              <input type="text" name="search" placeholder="search" />
-
-              <GoSearch className="search-icon" />
+              <Search />
             </div>
 
             <ul className="options">
