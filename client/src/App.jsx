@@ -13,6 +13,9 @@ import ProductUpload from "./components/admin/ProductUpload";
 import Orders from "./components/admin/Orders";
 import ProductDetails from "./pages/products/ProductDetails";
 import Products from "./pages/products/Products";
+import Deals from "./components/admin/Deals";
+import DailyDealsDetails from "./components/home/DailyDealsDetails";
+import WelcomeAdmin from "./components/admin/WelcomeAdmin";
 
 function App() {
   return (
@@ -39,8 +42,12 @@ function App() {
               element={<ProductDetails />}
             />
 
+            <Route path="deals/:id" element={<DailyDealsDetails />} />
+
             <Route path="admin" element={<Admin />}>
+              <Route index element={<WelcomeAdmin />} />
               <Route path="productUpload" element={<ProductUpload />} />
+              <Route path="deals" element={<Deals />} />
               <Route path="orders" element={<Orders />} />
             </Route>
           </Route>

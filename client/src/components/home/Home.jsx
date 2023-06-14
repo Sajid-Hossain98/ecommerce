@@ -1,4 +1,5 @@
 import CustomBuilds from "./CustomBuilds";
+import DailyDeals from "./DailyDeals";
 import ShopByCategory from "./ShopByCategory";
 import "./home.scss";
 
@@ -7,6 +8,10 @@ const Home = () => {
     <>
       <div className="home">
         <div className="home-container">
+          <div className="dailyDeals">
+            <DailyDeals />
+          </div>
+
           <div>
             <h1 className="heading-1">Peripherals for your setup</h1>
             <div>

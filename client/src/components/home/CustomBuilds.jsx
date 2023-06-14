@@ -64,7 +64,7 @@ const CustomBuilds = ({ whichCustomBuild }) => {
             >
               <div className="border">
                 <div className="image">
-                  <img src={product.imgUrls[0]} alt="hotel" />
+                  <img src={product.imgUrls[0]} alt={product.productName} />
                 </div>
 
                 <div className="content">

@@ -93,7 +93,6 @@ const ProductUpload = () => {
           (snapshot) => {
             const progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
             toast.success("Upload is " + progress + "% done");
           },
           (error) => {
@@ -126,8 +125,6 @@ const ProductUpload = () => {
     };
 
     delete formDataForDescriptionsCopy.images;
-
-    console.log(formDataForDescriptionsCopy);
 
     await addDoc(collection(db, "products"), formDataForDescriptionsCopy);
     setFormDataForDescriptions(initialDescriptions);

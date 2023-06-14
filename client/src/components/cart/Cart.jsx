@@ -6,7 +6,11 @@ import {
   resetCart,
   selectCartProducts,
 } from "../../redux/slice/cartSlice";
-import { selectIsLoggedIn, selectUserId } from "../../redux/slice/authSlice";
+import {
+  selectIsLoggedIn,
+  selectUserId,
+  selectUserName,
+} from "../../redux/slice/authSlice";
 import { Link } from "react-router-dom";
 import { BiLogInCircle } from "react-icons/bi";
 
@@ -14,6 +18,7 @@ const Cart = () => {
   const cartProducts = useSelector(selectCartProducts);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const currentUserId = useSelector(selectUserId);
+  const CurrentUserName = useSelector(selectUserName);
 
   const dispatch = useDispatch();
 
@@ -30,7 +35,7 @@ const Cart = () => {
     <>
       {isLoggedIn ? (
         <div className="cart-container">
-          <h4>Products in your cart</h4>
+          <h4>{CurrentUserName}'s cart</h4>
 
           {cartProductsForCurrentUser &&
           cartProductsForCurrentUser.length > 0 ? (

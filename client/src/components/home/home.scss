@@ -9,6 +9,33 @@
     width: 85%;
     margin: 2rem auto;
 
+    .dailyDeals {
+      width: 100%;
+      min-height: calc(45vh + 5vmin);
+      margin-bottom: 2.5rem;
+
+      .deals-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .image {
+          width: 100%;
+          position: relative;
+
+          img {
+            width: 100%;
+            height: calc(45vh + 5vmin);
+            object-fit: cover;
+          }
+        }
+
+        .timeLeft {
+          @include timeLeft;
+        }
+      }
+    }
+
     .heading-1 {
       width: 100%;
       color: $white;

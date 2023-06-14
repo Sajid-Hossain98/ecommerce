@@ -17,6 +17,12 @@ const Admin = () => {
           Product Upload
         </NavLink>
         <NavLink
+          to="deals"
+          style={({ isActive }) => (isActive ? activeStyles : null)}
+        >
+          Deals
+        </NavLink>
+        <NavLink
           to="orders"
           style={({ isActive }) => (isActive ? activeStyles : null)}
         >
