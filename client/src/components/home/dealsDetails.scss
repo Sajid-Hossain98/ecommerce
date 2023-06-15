@@ -1,0 +1,51 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+.dealDetails {
+  width: 85vw;
+  margin: 0 auto;
+  color: $black;
+  position: relative;
+
+  .swiper {
+    flex: 0.25;
+    margin: 0 auto;
+    width: 60%;
+    z-index: 0;
+    max-height: calc(30rem + 10vmin);
+
+    .image-swiper {
+      max-width: 85%;
+      margin: 0 auto;
+      background-color: $white;
+      height: 100%;
+      background-color: $body-bg;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  .content {
+    margin-top: 2rem;
+
+    .timeLeft {
+      @include timeLeft;
+      background-color: rgba($color: $orange, $alpha: 0.85);
+      border-bottom-left-radius: 0;
+    }
+
+    h1 {
+      font-size: calc(5px + 2vmin);
+      font-weight: 600;
+    }
+
+    .desc {
+      font-size: calc(2px + 1.7vmin);
+      text-align: justify;
+      padding: 0.5rem 0 1rem;
+    }
+  }
+}
