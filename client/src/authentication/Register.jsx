@@ -15,6 +15,7 @@ const firstLastName = {
 
 const Register = () => {
   const [fullName, setFullName] = useState(firstLastName);
+  const [contactNo, setContactNo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
@@ -43,8 +44,7 @@ const Register = () => {
       createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
           setIsLoading(false);
-          toast.success("You have successfully registered!");
-          navigate(-2);
+          navigate("/");
           refreshPage();
         })
         .catch((error) => {
@@ -57,8 +57,9 @@ const Register = () => {
       try {
         await setDoc(doc(db, "users-name", uuid()), {
           ...fullName,
-          timestamp: serverTimestamp(),
           email: email,
+          contactNo: contactNo,
+          timestamp: serverTimestamp(),
         });
       } catch (error) {
         toast.error(
@@ -122,6 +123,21 @@ const Register = () => {
               id="email"
               placeholder="Email Address"
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="formContact">
+            <label htmlFor="contact">
+              Contact No <sup>*</sup>
+            </label>
+            <input
+              required
+              type="number"
+              name="contactNo"
+              value={contactNo}
+              id="contact"
+              className="no-spin"
+              placeholder="Contact Number"
+              onChange={(e) => setContactNo(e.target.value)}
             />
           </div>
           <div className="formPassword">

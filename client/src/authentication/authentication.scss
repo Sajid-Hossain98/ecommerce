@@ -1,313 +1,322 @@
-@use '../variables' as *;
-@use '../mixins' as *;
+@use "../variables" as *;
+@use "../mixins" as *;
 
 .register {
- display: flex;
- align-items: center;
- flex-direction: column;
- color: $black;
- width: 100vw;
-
- h2 {
-  font-size: calc(1.2rem + 2vmin);
-  font-weight: 600;
-  text-decoration: underline;
- }
-
- .content {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  align-items: flex-start;
-  width: 50%;
-  gap: 1rem;
+  color: $black;
+  width: 100vw;
 
-  .formForName {
-   display: flex;
-   align-items: center;
-   gap: 1rem;
-   width: 100%;
+  h2 {
+    font-size: calc(1.2rem + 2vmin);
+    font-weight: 600;
+    text-decoration: underline;
+  }
 
-   .firstName {
+  .content {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     width: 50%;
+    gap: 1rem;
 
-    label {
-     font-size: calc(.5rem + 1.5vmin);
-     font-weight: 500;
-     padding: .5rem 0;
-     cursor: pointer;
+    .formForName {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
 
-     sup {
-      color: red;
-     }
+      .firstName {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        label {
+          font-size: calc(0.5rem + 1.5vmin);
+          font-weight: 500;
+          padding: 0.5rem 0;
+          cursor: pointer;
+
+          sup {
+            color: red;
+          }
+        }
+
+        input[type="text"] {
+          background: none;
+          border: none;
+          outline: none;
+          box-shadow: $dark_shadow;
+          border-radius: $light_border_radius;
+          padding: 0.8rem 1rem;
+          font-size: calc(0.5rem + 1.2vmin);
+        }
+      }
+
+      .lastName {
+        @extend .firstName;
+      }
     }
 
-    input[type='text'] {
-     background: none;
-     border: none;
-     outline: none;
-     box-shadow: $dark_shadow;
-     border-radius: $light_border_radius;
-     padding: .8rem 1rem;
-     font-size: calc(.5rem + 1.2vmin);
+    .formEmail {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      label {
+        font-size: calc(0.5rem + 1.5vmin);
+        font-weight: 500;
+        padding: 0.5rem 0;
+        cursor: pointer;
+
+        sup {
+          color: red;
+        }
+      }
+
+      input[type="email"] {
+        background: none;
+        border: none;
+        outline: none;
+        box-shadow: $dark_shadow;
+        border-radius: $light_border_radius;
+        padding: 0.8rem 1rem;
+        font-size: calc(0.5rem + 1.2vmin);
+      }
     }
-   }
 
-   .lastName {
-    @extend .firstName;
-   }
+    .formContact {
+      @include numberInput;
+      @extend .formEmail;
 
+      .no-spin::-webkit-inner-spin-button,
+      .no-spin::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+      }
+    }
 
+    .formPassword {
+      @extend .formEmail;
+
+      input[type="password"] {
+        background: none;
+        border: none;
+        outline: none;
+        box-shadow: $dark_shadow;
+        border-radius: $light_border_radius;
+        padding: 0.8rem 1rem;
+        font-size: calc(0.5rem + 1.2vmin);
+      }
+    }
+
+    .formCPassword {
+      @extend .formPassword;
+    }
+
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      font-size: calc(0.5rem + 1.2vmin);
+      width: 100%;
+      background-color: #3749bb;
+      padding: 0.8rem 0;
+      margin: 1rem 0;
+      border-radius: $light_border_radius;
+      color: $white;
+      cursor: pointer;
+    }
   }
 
-  .formEmail {
-   display: flex;
-   flex-direction: column;
-   width: 100%;
-
-   label {
-    font-size: calc(.5rem + 1.5vmin);
+  h4 {
+    display: flex;
+    gap: 0.4rem;
     font-weight: 500;
-    padding: .5rem 0;
-    cursor: pointer;
-
-    sup {
-     color: red;
-    }
-   }
-
-   input[type='email'] {
-    background: none;
-    border: none;
-    outline: none;
-    box-shadow: $dark_shadow;
-    border-radius: $light_border_radius;
-    padding: .8rem 1rem;
-    font-size: calc(.5rem + 1.2vmin);
-   }
   }
-
-  .formPassword {
-   @extend .formEmail;
-
-   input[type='password'] {
-    background: none;
-    border: none;
-    outline: none;
-    box-shadow: $dark_shadow;
-    border-radius: $light_border_radius;
-    padding: .8rem 1rem;
-    font-size: calc(.5rem + 1.2vmin);
-   }
-  }
-
-  .formCPassword {
-   @extend .formPassword;
-  }
-
-  button {
-   background: none;
-   border: none;
-   outline: none;
-   font-size: calc(.5rem + 1.2vmin);
-   width: 100%;
-   background-color: #3749bb;
-   padding: .8rem 0;
-   margin: 1rem 0;
-   border-radius: $light_border_radius;
-   color: $white;
-   cursor: pointer;
-  }
- }
-
- h4 {
-  display: flex;
-  gap: .4rem;
-  font-weight: 500;
- }
 }
 
 //style for login page
 .login {
- width: 100%;
- display: flex;
- align-items: center;
- flex-direction: column;
- color: $black;
-
- h2 {
-  font-size: calc(1.2rem + 2vmin);
-  font-weight: 600;
-  text-decoration: underline;
- }
-
- .content {
+  width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
-  gap: 1rem;
-  width: 40%;
+  color: $black;
 
-  .email {
-   display: flex;
-   flex-direction: column;
-   width: 100%;
-
-   label {
-    font-size: calc(.5rem + 1.5vmin);
-    font-weight: 500;
-    padding: .5rem 0;
-    cursor: pointer;
-   }
-
-
-   input[type='email'] {
-    width: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    padding: .8rem 1rem;
-    color: $black;
-    background-color: $white;
-    border-radius: $light_border_radius;
-    font-size: calc(2px + 2vmin);
-    box-shadow: $dark_shadow;
-   }
+  h2 {
+    font-size: calc(1.2rem + 2vmin);
+    font-weight: 600;
+    text-decoration: underline;
   }
 
-  .password {
-   @extend .email;
-
-   .forgotPass {
+  .content {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    width: 40%;
 
-    a {
-     color: $clr_red_light;
+    .email {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      label {
+        font-size: calc(0.5rem + 1.5vmin);
+        font-weight: 500;
+        padding: 0.5rem 0;
+        cursor: pointer;
+      }
+
+      input[type="email"] {
+        width: 100%;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0.8rem 1rem;
+        color: $black;
+        background-color: $white;
+        border-radius: $light_border_radius;
+        font-size: calc(2px + 2vmin);
+        box-shadow: $dark_shadow;
+      }
     }
-   }
 
-   input[type='password'] {
-    width: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    padding: .8rem 1rem;
-    color: $black;
-    background-color: $white;
-    border-radius: $light_border_radius;
-    font-size: calc(2px + 2vmin);
-    box-shadow: $dark_shadow;
-   }
-  }
+    .password {
+      @extend .email;
 
-  button {
-   background: none;
-   border: none;
-   outline: none;
-   font-size: calc(.5rem + 1.2vmin);
-   width: 100%;
-   background-color: #3749bb;
-   padding: .8rem 0;
-   margin: 1rem 0;
-   border-radius: $light_border_radius;
-   color: $white;
-   cursor: pointer;
-  }
+      .forgotPass {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-  span {
-   width: 100%;
-   display: grid;
-   place-items: center;
-   font-size: calc(.6rem + 1vmin);
-   font-weight: 600;
-  }
+        a {
+          color: $clr_red_light;
+        }
+      }
 
-  .toRegister {
-   background: none;
-   outline: none;
-   display: grid;
-   place-items: center;
-   font-size: calc(.5rem + 1.2vmin);
-   width: 100%;
-   border: 2px solid #3749bb;
-   color: $black !important;
-   padding: .55rem 0;
-   border-radius: $light_border_radius;
-   color: $white;
-   cursor: pointer;
+      input[type="password"] {
+        width: 100%;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0.8rem 1rem;
+        color: $black;
+        background-color: $white;
+        border-radius: $light_border_radius;
+        font-size: calc(2px + 2vmin);
+        box-shadow: $dark_shadow;
+      }
+    }
+
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      font-size: calc(0.5rem + 1.2vmin);
+      width: 100%;
+      background-color: #3749bb;
+      padding: 0.8rem 0;
+      margin: 1rem 0;
+      border-radius: $light_border_radius;
+      color: $white;
+      cursor: pointer;
+    }
+
+    span {
+      width: 100%;
+      display: grid;
+      place-items: center;
+      font-size: calc(0.6rem + 1vmin);
+      font-weight: 600;
+    }
+
+    .toRegister {
+      background: none;
+      outline: none;
+      display: grid;
+      place-items: center;
+      font-size: calc(0.5rem + 1.2vmin);
+      width: 100%;
+      border: 2px solid #3749bb;
+      color: $black !important;
+      padding: 0.55rem 0;
+      border-radius: $light_border_radius;
+      color: $white;
+      cursor: pointer;
+    }
   }
- }
 }
 
 //forgot password page design
 .forgotPassword {
- display: flex;
- align-items: center;
- flex-direction: column;
- color: $black;
- width: 100vw;
-
- h2 {
-  font-size: calc(1.2rem + 2vmin);
-  font-weight: 600;
-  text-decoration: underline;
- }
-
- .content {
-  width: 50%;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  gap: 2rem;
+  color: $black;
+  width: 100vw;
 
-  .backBtn {
-   display: flex;
-   align-items: center;
-   color: $white;
-   background-color: $black;
-   padding: .2rem .5rem;
-   float: left;
-   width: max-content;
-
-   &:hover {
-    background-color: rgba($color: $black, $alpha: 0.95);
-   }
+  h2 {
+    font-size: calc(1.2rem + 2vmin);
+    font-weight: 600;
+    text-decoration: underline;
   }
 
-  .inputField {
-   @include textInput;
+  .content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 
-   display: flex;
-   flex-direction: column;
+    .backBtn {
+      display: flex;
+      align-items: center;
+      color: $white;
+      background-color: $black;
+      padding: 0.2rem 0.5rem;
+      float: left;
+      width: max-content;
 
-   button {
-    @include buttonBasic;
-
-    font-size: calc(.5rem + 1.2vmin);
-    background-color: #3749bb;
-    padding: .5rem 0;
-    margin-top: 2rem;
-    border-radius: $light_border_radius;
-    color: $white;
-    cursor: pointer;
-
-    &:hover {
-     background-color: #3749bb;
+      &:hover {
+        background-color: rgba($color: $black, $alpha: 0.95);
+      }
     }
-   }
 
-   p {
-    font-size: calc(1px + 1.1vmin);
-    text-align: center;
-    padding: .5rem 0;
+    .inputField {
+      @include textInput;
 
-    span {
-     font-size: calc(1px + 1.5vmin);
-     color: red;
+      display: flex;
+      flex-direction: column;
+
+      button {
+        @include buttonBasic;
+
+        font-size: calc(0.5rem + 1.2vmin);
+        background-color: #3749bb;
+        padding: 0.5rem 0;
+        margin-top: 2rem;
+        border-radius: $light_border_radius;
+        color: $white;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #3749bb;
+        }
+      }
+
+      p {
+        font-size: calc(1px + 1.1vmin);
+        text-align: center;
+        padding: 0.5rem 0;
+
+        span {
+          font-size: calc(1px + 1.5vmin);
+          color: red;
+        }
+      }
     }
-   }
   }
- }
 }

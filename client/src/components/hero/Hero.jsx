@@ -32,6 +32,7 @@ import { useComponentHideAndShow } from "../../hooks/useComponentHideAndShow";
 import Cart from "../cart/Cart";
 import { selectCartProducts } from "../../redux/slice/cartSlice";
 import Search from "../search/Search";
+import { GiTakeMyMoney } from "react-icons/gi";
 
 const Hero = () => {
   // listening for scroll direction(up/down), if scrolling down then hiding the navbar and if scrolling up then showing the navbar
@@ -40,6 +41,7 @@ const Hero = () => {
   const [open, setOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [currentUserName, setCurrentUserName] = useState("");
+  const [currentUserContact, setCurrentUserContact] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,11 +70,14 @@ const Hero = () => {
           setCurrentUserName(`${data.firstName} ${data.lastName}`)
         );
 
+        filteredUser.map((data) => setCurrentUserContact(data.contactNo));
+
         dispatch(
           SET_ACTIVE_USER({
             email: user.email,
             userId: user.uid,
             userName: currentUserName,
+            contactNo: currentUserContact,
           })
         );
       } else {
@@ -134,9 +139,9 @@ const Hero = () => {
 
             <ul className="options">
               <li>
-                <Link>
-                  <MdOutlineSettingsSuggest />
-                  <span>Custom PC</span>
+                <Link to="/resell">
+                  <GiTakeMyMoney />
+                  <span>ReSells</span>
                 </Link>
               </li>
 
@@ -157,32 +162,48 @@ const Hero = () => {
               <li ref={ref}>
                 {isLoggedIn ? (
                   <>
-                    <div className="userName" onClick={() => setOpen(!open)}>
-                      <RiUserFill />
-                      <span>
-                        {userName.length > 20
-                          ? userName.slice(0, 20)
-                          : userName}
-                      </span>
-                      {open ? (
-                        <RiArrowDownSLine style={{ color: "#fda500" }} />
-                      ) : (
-                        <RiArrowRightSLine />
-                      )}
+                    <div
+                      className="account-icon"
+                      onClick={() => setOpen(!open)}
+                    >
+                      <div className="no-user">
+                        <img
+                          src="https://i.ibb.co/pdqZyw8/no-user.png"
+                          alt="no-user-icon"
+                        />
+                      </div>
 
-                      {open ? <ExpandOnClick logoutUser={logoutUser} /> : null}
+                      {open ? (
+                        <ExpandOnClick
+                          logoutUser={logoutUser}
+                          userName={userName}
+                        />
+                      ) : null}
                     </div>
                   </>
                 ) : (
-                  <div className="account">
-                    <div className="nameIcon">
-                      <RiAccountPinCircleLine />
-                      <span>Account</span>
-                    </div>
-                    <div className="loginOrRegister">
-                      <Link to="/register">Register</Link>
-                      or
-                      <Link to="/login">Login</Link>
+                  <div className="account-icon" onClick={() => setOpen(!open)}>
+                    <div className="no-user">
+                      <img
+                        src="https://i.ibb.co/pdqZyw8/no-user.png"
+                        alt="no-user-icon"
+                      />
+
+                      {open ? (
+                        <>
+                          <div className="account">
+                            <div className="nameIcon">
+                              <RiAccountPinCircleLine />
+                              <span>Account</span>
+                            </div>
+                            <div className="loginOrRegister">
+                              <Link to="/register">Register</Link>
+                              or
+                              <Link to="/login">Login</Link>
+                            </div>
+                          </div>
+                        </>
+                      ) : null}
                     </div>
                   </div>
                 )}

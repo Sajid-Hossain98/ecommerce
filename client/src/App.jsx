@@ -16,6 +16,9 @@ import Products from "./pages/products/Products";
 import Deals from "./components/admin/Deals";
 import DailyDealsDetails from "./components/home/DailyDealsDetails";
 import WelcomeAdmin from "./components/admin/WelcomeAdmin";
+import ScrollToTop from "./hooks/ScrollToTop";
+import Resell from "./pages/resell/Resell";
+import ResellProductUpload from "./pages/resell/ResellProductUpload";
 
 function App() {
   return (
@@ -23,6 +26,7 @@ function App() {
       value={{ style: { color: "#23272e", fontSize: "22px" } }}
     >
       <BrowserRouter>
+        <ScrollToTop />
         <ToastContainer
           position="top-left"
           autoClose={4000}
@@ -43,6 +47,12 @@ function App() {
             />
 
             <Route path="deals/:id" element={<DailyDealsDetails />} />
+
+            <Route path="resell" element={<Resell />} />
+            <Route
+              path="resell/sellProductUpload"
+              element={<ResellProductUpload />}
+            />
 
             <Route path="admin" element={<Admin />}>
               <Route index element={<WelcomeAdmin />} />

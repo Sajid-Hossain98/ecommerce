@@ -162,6 +162,17 @@
         border-radius: $light_border_radius;
         transition: $transition;
 
+        &:nth-child(4) {
+          border-radius: 50%;
+          background: $black;
+          box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $black;
+          }
+        }
+
         &:last-child {
           background: none;
           position: relative;
@@ -416,76 +427,82 @@
         }
       }
 
-      .userName {
+      .userIconDiv {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 0.2rem;
-        color: $black;
-        padding: 0.5rem 1rem;
-        font-size: calc(2px + 1.5vmin);
-        cursor: pointer;
-        position: relative;
+        z-index: 999;
+        background-color: $black;
+        border-radius: $light_border_radius;
+        overflow: hidden;
+        width: max-content;
 
-        .userIconDiv {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.3rem;
-          position: absolute;
-          top: 100%;
-          right: 0%;
-          left: 0%;
-          z-index: 999;
-          background-color: $black;
-          border-radius: $light_border_radius;
-          overflow: hidden;
-          margin-top: 0.3rem;
+        a {
+          width: 100%;
+          background-color: $orange;
+          color: $black;
+          cursor: pointer;
 
-          a {
-            width: 100%;
-            background-color: $orange;
-            color: $black;
-
-            &:hover {
-              background-color: rgba($color: $orange, $alpha: 0.92);
-            }
+          &:hover {
+            background-color: rgba($color: $orange, $alpha: 0.92);
           }
         }
       }
 
-      .account {
-        @extend .userName;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 0;
-        border-radius: $light_border_radius;
-        cursor: auto;
+      .account-icon {
+        padding: 0.5rem;
+        position: relative;
 
-        &:hover {
-          background-color: $white;
-        }
+        .no-user {
+          position: relative;
 
-        .nameIcon {
-          display: flex;
-          align-items: center;
-          gap: 0.2rem;
-        }
+          img {
+            height: 2.6rem;
+            width: 2.9rem;
+          }
 
-        .loginOrRegister {
-          display: flex;
-          align-items: center;
-          gap: 0.2rem;
-          font-size: calc(1px + 1vmin);
+          .account {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: $light_border_radius;
+            color: $black;
+            position: absolute;
+            top: 100%;
+            background-color: $orange;
+            z-index: 9999;
+            cursor: default;
 
-          a {
-            padding: 0.1rem 0.2rem;
-            font-size: calc(2px + 1.2vmin);
+            .nameIcon {
+              display: flex;
+              align-items: center;
+              gap: 0.2rem;
+            }
 
-            &:hover {
-              color: rgb(253, 165, 0);
+            .loginOrRegister {
+              display: flex;
+              align-items: center;
+              gap: 0.2rem;
+              font-size: calc(1px + 1vmin);
+
+              a {
+                padding: 0.1rem 0.2rem;
+                font-size: calc(2px + 1.2vmin);
+
+                &:hover {
+                  color: $white;
+                }
+              }
             }
           }
+        }
+
+        .userIconDiv {
+          position: absolute;
+          top: 100%;
+          left: 0%;
         }
       }
     }

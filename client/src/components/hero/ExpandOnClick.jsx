@@ -1,11 +1,14 @@
-import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
-import { RiProfileLine } from "react-icons/ri";
+import { RiProfileLine, RiUserFill } from "react-icons/ri";
 
-const ExpandOnClick = ({ logoutUser }) => {
+const ExpandOnClick = ({ logoutUser, userName }) => {
   return (
     <div className="userIconDiv">
+      <Link>
+        <RiUserFill />
+        <span>{userName.length > 20 ? userName.slice(0, 20) : userName}</span>
+      </Link>
       <Link>
         <RiProfileLine />
         Profile
