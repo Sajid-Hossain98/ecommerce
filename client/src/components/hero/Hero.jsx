@@ -166,10 +166,10 @@ const Hero = () => {
                       className="account-icon"
                       onClick={() => setOpen(!open)}
                     >
-                      <div className="no-user">
+                      <div className="user-account-icon">
                         <img
-                          src="https://i.ibb.co/pdqZyw8/no-user.png"
-                          alt="no-user-icon"
+                          src="https://i.ibb.co/z4nRg2C/user.png"
+                          alt="user-icon"
                         />
                       </div>
 
@@ -183,7 +183,7 @@ const Hero = () => {
                   </>
                 ) : (
                   <div className="account-icon" onClick={() => setOpen(!open)}>
-                    <div className="no-user">
+                    <div className="user-account-icon">
                       <img
                         src="https://i.ibb.co/pdqZyw8/no-user.png"
                         alt="no-user-icon"

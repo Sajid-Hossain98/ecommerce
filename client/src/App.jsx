@@ -19,6 +19,7 @@ import WelcomeAdmin from "./components/admin/WelcomeAdmin";
 import ScrollToTop from "./hooks/ScrollToTop";
 import Resell from "./pages/resell/Resell";
 import ResellProductUpload from "./pages/resell/ResellProductUpload";
+import ResellItemDetails from "./pages/resell/ResellItemDetails";
 
 function App() {
   return (
@@ -52,6 +53,10 @@ function App() {
             <Route
               path="resell/sellProductUpload"
               element={<ResellProductUpload />}
+            />
+            <Route
+              path="resell/resellItemDetail/:id"
+              element={<ResellItemDetails />}
             />
 
             <Route path="admin" element={<Admin />}>

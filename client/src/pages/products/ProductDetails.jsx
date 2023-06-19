@@ -64,7 +64,7 @@ const ProductDetails = () => {
             <div className="key-details">
               <h3 className="heading">Key Descriptions</h3>
 
-              <ul className="details-list" key={product.id}>
+              <ul className="details-list">
                 <h4 className="name">
                   {product.productName} {product.productModel}
                 </h4>

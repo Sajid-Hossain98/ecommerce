@@ -2,7 +2,124 @@
 @use "../../mixins" as *;
 
 .resell {
+  width: 100%;
   color: $black;
+
+  .titleAndSellBtn {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+
+    h1 {
+      font-weight: 500;
+      margin-top: 1.5rem;
+      font-size: calc(1.5rem + 2vmin);
+    }
+
+    span {
+      font-size: calc(1px + 1.8vmin);
+      position: relative;
+      padding-bottom: .5rem;
+
+      &::after {
+        content: "";
+        position: absolute;
+        background-color: $orange;
+        left: 0;
+        bottom: 5%;
+        height: 2px;
+        width: 100%;
+      }
+    }
+
+    a {
+      font-weight: 600;
+      margin: 1rem 0;
+
+      .resellBtn {
+        @include advanceBtn;
+
+        font-size: calc(1px + 1.6vmin);
+        border: 1px solid $clr_primary_1;
+        padding: .5rem 1rem;
+      }
+    }
+  }
+
+  .resell-container {
+    width: 85%;
+    margin: 0 auto;
+
+    a {
+      color: $black;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-top: 2rem;
+      padding: 1rem 0;
+      gap: 1rem;
+      border-radius: $light_border_radius;
+      border-bottom: 2px solid $grey;
+
+      &:hover {
+        background-color: rgba($color: $white, $alpha: 0.3);
+      }
+
+      .image {
+        width: 15%;
+
+        img {
+          height: 8rem;
+          width: 80%;
+          object-fit: cover;
+          border-radius: $light-border-radius;
+        }
+      }
+
+      .content {
+        width: 60%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: .5rem;
+
+          h4 {
+            font-size: calc(2px + 2vmin);
+            font-weight: 600;
+            text-transform: capitalize;
+          }
+
+          p {
+            font-size: calc(2px + 1.4vmin);
+          }
+        }
+      }
+    }
+  }
+}
+
+.resellDetails {
+  .details-container {
+    .main-details {
+      .key-details {
+        button {
+          @include advanceBtn;
+
+          margin-top: 1rem;
+          font-size: calc(1px + 1.8vmin);
+          border: 1px solid $clr_primary_1;
+          padding: .5rem 2rem;
+          z-index: 1;
+        }
+      }
+    }
+  }
 }
 
 .resellForm {
