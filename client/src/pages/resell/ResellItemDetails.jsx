@@ -45,7 +45,7 @@ const ResellItemDetails = () => {
           <p>You have received a new purchase request of the product: ${itemName}.</p>
           <p>Buyer Name: ${buyerName}</p>
           <p>Buyer Contact: ${sellerContact}</p>
-          <p>Please contact with the buyer.</p>
+          <p>Please contact with the buyer, Thank You!</p>
         `,
         messageVersions: [
           {
@@ -70,7 +70,6 @@ const ResellItemDetails = () => {
         }
       );
 
-      console.log(response.status);
       toast.success("Email sent successfully!");
     } catch (error) {
       toast.error(
