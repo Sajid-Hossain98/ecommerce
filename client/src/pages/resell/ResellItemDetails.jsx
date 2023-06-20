@@ -9,6 +9,10 @@ import SwiperCore, {
   Navigation,
   Pagination,
 } from "swiper";
+import { useSelector } from "react-redux";
+import { selectEmail, selectUserName } from "../../redux/slice/authSlice";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const ResellItemDetails = () => {
   const params = useParams();
@@ -16,9 +20,64 @@ const ResellItemDetails = () => {
 
   SwiperCore.use([Autoplay, Navigation, Pagination]);
 
+  const buyerEmail = useSelector(selectEmail);
+  const buyerName = useSelector(selectUserName);
+
   const filteredItem = resellDataCollection.data.filter(
     (item) => item.id === params.id
   );
+
+  const handleSendEmail = async (
+    sellerName,
+    sellerEmail,
+    sellerContact,
+    itemName
+  ) => {
+    try {
+      const payload = {
+        sender: {
+          email: buyerEmail,
+          name: buyerName,
+        },
+        subject: "New Product Purchase Notification",
+        htmlContent: `
+          <p>Dear ${sellerName},</p>
+          <p>You have received a new purchase request of the product: ${itemName}.</p>
+          <p>Buyer Name: ${buyerName}</p>
+          <p>Buyer Contact: ${sellerContact}</p>
+          <p>Please contact with the buyer.</p>
+        `,
+        messageVersions: [
+          {
+            to: [
+              {
+                email: sellerEmail,
+                name: "Seller",
+              },
+            ],
+          },
+        ],
+      };
+
+      const response = await axios.post(
+        "https://api.brevo.com/v3/smtp/email",
+        payload,
+        {
+          headers: {
+            "api-key": import.meta.env.VITE_APP_BREVOEMAILAPI,
+            "content-type": "application/json",
+          },
+        }
+      );
+
+      console.log(response.status);
+      toast.success("Email sent successfully!");
+    } catch (error) {
+      toast.error(
+        "Sorry couldn't notify the seller, you can contact the seller yourself!"
+      );
+    }
+  };
 
   return (
     <>
@@ -82,17 +141,38 @@ const ResellItemDetails = () => {
                       </li>
 
                       <li>
-                        <h5>Seller Contact:</h5>
-                        <span>{data.sellerContact}</span>
+                        <h5>Seller Name:</h5>
+                        <span>{data.sellerName}</span>
                       </li>
 
                       <li>
                         <h5>Seller Email:</h5>
                         <span>{data.sellerEmail}</span>
                       </li>
+
+                      <li>
+                        <h5>Seller Contact:</h5>
+                        <span>
+                          {data.sellerContact
+                            .toString()
+                            .replace(/(\d{5})/, "$1-")}
+                        </span>
+                      </li>
                     </ul>
 
-                    <button className="buyItem">Buy</button>
+                    <button
+                      className="buyItem"
+                      onClick={() =>
+                        handleSendEmail(
+                          data.sellerName,
+                          data.sellerEmail,
+                          data.sellerContact,
+                          data.itemName
+                        )
+                      }
+                    >
+                      Buy
+                    </button>
                   </div>
                 </div>
 

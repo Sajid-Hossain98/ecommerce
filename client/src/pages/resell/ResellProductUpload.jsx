@@ -13,6 +13,7 @@ import {
   selectContactNo,
   selectEmail,
   selectUserId,
+  selectUserName,
 } from "../../redux/slice/authSlice";
 
 const initialProperties = {
@@ -28,8 +29,9 @@ const ResellProductUpload = () => {
   const [whatProduct, setWhatProduct] = useState(null);
   const [warrantyLeft, setWarrantyLeft] = useState(null);
 
-  const sellerUid = useSelector(selectUserId);
+  const sellerName = useSelector(selectUserName);
   const sellerEmail = useSelector(selectEmail);
+  const sellerUid = useSelector(selectUserId);
   const sellerContactNo = useSelector(selectContactNo);
 
   const [detailsInputFields, setDetailsInputFields] = useState([
@@ -114,8 +116,9 @@ const ResellProductUpload = () => {
       whatProduct:
         whatProduct && whatProduct.value.replace(/\s+/g, "-").toLowerCase(),
       warrantyLeft: warrantyLeft && warrantyLeft.value,
-      sellerUid: sellerUid,
+      sellerName: sellerName,
       sellerEmail: sellerEmail,
+      sellerUid: sellerUid,
       sellerContact: sellerContactNo,
       timestamp: serverTimestamp(),
     };

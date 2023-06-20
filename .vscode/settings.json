@@ -3,6 +3,7 @@
     "Antec",
     "Asus",
     "Avenir",
+    "BREVOEMAILAPI",
     "Deepcool",
     "Fantech",
     "Gskill",
@@ -31,6 +32,7 @@
     "pathao",
     "persistor",
     "PROJECTID",
+    "Pylz",
     "reduxjs",
     "Ryzen",
     "saira",
@@ -39,7 +41,8 @@
     "swiper",
     "Swiper",
     "toastify",
-    "unsub"
+    "unsub",
+    "xkeysib"
   ],
   "editor.formatOnType": false,
   "editor.formatOnSave": true,
