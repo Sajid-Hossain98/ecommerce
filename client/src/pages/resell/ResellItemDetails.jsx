@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
 import useFirestoreCollection from "../../hooks/useFirestoreCollection";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -20,6 +20,7 @@ const ResellItemDetails = () => {
 
   SwiperCore.use([Autoplay, Navigation, Pagination]);
 
+  const isLoggedIn = useSelector(selectEmail);
   const buyerEmail = useSelector(selectEmail);
   const buyerName = useSelector(selectUserName);
 
@@ -159,19 +160,25 @@ const ResellItemDetails = () => {
                       </li>
                     </ul>
 
-                    <button
-                      className="buyItem"
-                      onClick={() =>
-                        handleSendEmail(
-                          data.sellerName,
-                          data.sellerEmail,
-                          data.sellerContact,
-                          data.itemName
-                        )
-                      }
-                    >
-                      Buy
-                    </button>
+                    {isLoggedIn ? (
+                      <button
+                        className="buyItem"
+                        onClick={() =>
+                          handleSendEmail(
+                            data.sellerName,
+                            data.sellerEmail,
+                            data.sellerContact,
+                            data.itemName
+                          )
+                        }
+                      >
+                        Interested
+                      </button>
+                    ) : (
+                      <Link to="/login">
+                        <button className="buyItem">Login Please</button>
+                      </Link>
+                    )}
                   </div>
                 </div>
 

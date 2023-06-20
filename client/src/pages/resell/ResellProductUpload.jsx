@@ -15,6 +15,7 @@ import {
   selectUserId,
   selectUserName,
 } from "../../redux/slice/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const initialProperties = {
   itemName: "",
@@ -33,6 +34,8 @@ const ResellProductUpload = () => {
   const sellerEmail = useSelector(selectEmail);
   const sellerUid = useSelector(selectUserId);
   const sellerContactNo = useSelector(selectContactNo);
+
+  const navigate = useNavigate();
 
   const [detailsInputFields, setDetailsInputFields] = useState([
     { nameOfTheDetail: "", detail: "" },
@@ -127,6 +130,7 @@ const ResellProductUpload = () => {
 
     await addDoc(collection(db, "resells"), resellFormDataCopy);
     setResellFormData(initialProperties);
+    navigate("/resell");
     toast.success(
       "Your item is added successfully, you can check your profile for the items you are selling."
     );

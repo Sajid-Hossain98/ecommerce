@@ -152,13 +152,6 @@ const Hero = () => {
                 </Link>
               </li>
 
-              <li>
-                <Link>
-                  <MdOutlineBuildCircle />
-                  <span>Builder</span>
-                </Link>
-              </li>
-
               <li ref={ref}>
                 {isLoggedIn ? (
                   <>
