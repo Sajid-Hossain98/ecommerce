@@ -31,7 +31,7 @@ function App() {
         <ScrollToTop />
         <ToastContainer
           position="top-left"
-          autoClose={4000}
+          autoClose={6000}
           closeOnClick
           theme="dark"
         />

@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   REMOVE_ACTIVE_USER,
   SET_ACTIVE_USER,
+  selectEmail,
   selectIsLoggedIn,
   selectUserId,
   selectUserName,
@@ -49,6 +50,8 @@ const Hero = () => {
 
   const userName = useSelector(selectUserName);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const userEmail = useSelector(selectEmail);
+  const adminEmail = import.meta.env.VITE_APP_ADMINEMAIL;
 
   const { ref } = useComponentHideAndShow(setOpen);
 
@@ -126,12 +129,14 @@ const Hero = () => {
               </Link>
             </div>
 
-            <div className="admin">
-              <Link to="/admin">
-                <GrUserAdmin />
-                <span>Admin</span>
-              </Link>
-            </div>
+            {isLoggedIn && userEmail === adminEmail && (
+              <div className="admin">
+                <Link to="/admin">
+                  <GrUserAdmin />
+                  <span>Admin</span>
+                </Link>
+              </div>
+            )}
 
             <div className="search">
               <Search />
