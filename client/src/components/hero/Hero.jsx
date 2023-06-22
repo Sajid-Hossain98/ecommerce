@@ -146,7 +146,7 @@ const Hero = () => {
               </li>
 
               <li>
-                <Link>
+                <Link to="/deals">
                   <FaIdeal />
                   <span>Today's Deals</span>
                 </Link>

@@ -20,6 +20,7 @@ import ScrollToTop from "./hooks/ScrollToTop";
 import Resell from "./pages/resell/Resell";
 import ResellProductUpload from "./pages/resell/ResellProductUpload";
 import ResellItemDetails from "./pages/resell/ResellItemDetails";
+import DealsAll from "./components/home/DealsAll";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               path="products/:whatProduct/productDetails/:id"
               element={<ProductDetails />}
             />
+            <Route path="deals" element={<DealsAll />} />
 
             <Route path="deals/:id" element={<DailyDealsDetails />} />
 

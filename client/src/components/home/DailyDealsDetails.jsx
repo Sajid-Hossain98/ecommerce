@@ -11,6 +11,7 @@ import SwiperCore, {
 } from "swiper";
 import "swiper/css/bundle";
 import CountdownTimer from "./CountDownTImer";
+import Loader from "../loader/Loader";
 
 const DailyDealsDetails = () => {
   const dealParam = useParams();
@@ -25,6 +26,8 @@ const DailyDealsDetails = () => {
 
   return (
     <>
+      {dealsDataCollection.isLoading && <Loader />}
+
       {filteredDeal.map((deal) => {
         const endDate = new Date(deal.endingDate.seconds * 1000);
 
