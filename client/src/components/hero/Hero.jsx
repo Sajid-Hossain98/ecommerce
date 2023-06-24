@@ -125,10 +125,7 @@ const Hero = () => {
           <div className="content">
             <div className="logo">
               <Link to="/">
-                <img
-                  src="https://i.ibb.co/3hnJ1zR/logo-pcworld.png"
-                  alt="logo"
-                />
+                <img src="https://i.ibb.co/mcDGqN0/Logo-1.png" alt="logo" />
               </Link>
             </div>
 
