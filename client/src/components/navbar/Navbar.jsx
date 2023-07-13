@@ -5,23 +5,25 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <div className="navbarContainer">
-        {navLinks.map((links, index) => (
+      {/* <div className="navbarContainer">
+        {navLinks.map((mainLink, index) => (
           <div key={index} className="navbar">
             <Link
               to={
-                !links.subMenu
-                  ? `products/${links.name.replace(/\s+/g, "-").toLowerCase()}`
+                !mainLink.subMenu
+                  ? `products/${mainLink.name
+                      .replace(/\s+/g, "-")
+                      .toLowerCase()}`
                   : null
               }
             >
-              {links.name}
+              {mainLink.name}
             </Link>
 
             <div className="navLinksContainer">
-              {links.subMenu && (
+              {mainLink.subMenu && (
                 <ul className="navLinks">
-                  {links.subLinks.map((link, i) => (
+                  {mainLink.subLinks.map((link, i) => (
                     <li key={i}>
                       <Link
                         to={`products/${link.name
@@ -37,6 +39,60 @@ const Navbar = () => {
             </div>
           </div>
         ))}
+      </div> */}
+
+      <div className="navbarContainer">
+        <div className="row">
+          {navLinks.slice(0, 5).map((mainLink, index) => (
+            <div key={index} className="navbar">
+              <Link
+                to={
+                  !mainLink.subMenu
+                    ? `products/${mainLink.name
+                        .replace(/\s+/g, "-")
+                        .toLowerCase()}`
+                    : null
+                }
+              >
+                {mainLink.name}
+              </Link>
+              <div className="navLinksContainer">
+                {mainLink.subMenu && (
+                  <ul className="navLinks">
+                    {mainLink.subLinks.map((link, i) => (
+                      <li key={i}>
+                        <Link
+                          to={`products/${link.name
+                            .replace(/\s+/g, "-")
+                            .toLowerCase()}`}
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="row">
+          {navLinks.slice(5).map((mainLink, index) => (
+            <div key={index} className="navbar">
+              <Link
+                to={
+                  !mainLink.subMenu
+                    ? `products/${mainLink.name
+                        .replace(/\s+/g, "-")
+                        .toLowerCase()}`
+                    : null
+                }
+              >
+                {mainLink.name}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

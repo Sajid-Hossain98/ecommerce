@@ -4,74 +4,174 @@
   width: 85vw;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
   gap: 1rem;
   height: calc(2rem + 3vmin);
   background-color: $clr_primary_1;
   margin: 1rem auto;
   border-radius: $light_border_radius;
 
-  .navbar {
-    position: relative;
-    height: inherit;
-    width: 100%;
+  .row {
+    width: 40%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 1rem;
+    justify-content: space-around;
+    height: inherit;
 
-    &:hover a {
-      color: $grey;
+    &:nth-child(1) {
+      width: 60%;
     }
 
-    a {
-      color: $white;
-      font-size: calc(0.5rem + 1.2vmin);
-      font-weight: 500;
-      height: 100%;
-      width: 100%;
-      display: grid;
-      place-items: center;
-    }
+    .navbar {
+      position: relative;
+      height: inherit;
+      width: max-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-    .navLinksContainer {
-      display: none;
-      position: absolute;
+      &:hover a {
+        color: $grey;
+      }
 
-      .navLinks {
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 0.2rem;
-        background-color: $clr_primary_1;
-        padding: 1rem 2rem;
+      a {
+        color: $white;
+        font-size: calc(0.5rem + 1.2vmin);
+        font-weight: 500;
+        height: 100%;
         width: max-content;
+        display: grid;
+        place-items: center;
+      }
 
-        &::after {
-          content: "";
-          position: absolute;
-          background-color: $orange;
-          height: 3px;
-          width: 100%;
-          top: 0;
-          left: 0;
-        }
+      .navLinksContainer {
+        display: none;
+        position: absolute;
 
-        a {
-          padding: 0.4rem 0;
-          color: $white;
-          width: 100%;
+        .navLinks {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 0.2rem;
+          background-color: $clr_primary_1;
+          padding: 1rem 2rem;
+          width: max-content;
 
-          &:hover {
-            color: $orange;
+          &::after {
+            content: "";
+            position: absolute;
+            background-color: $orange;
+            height: 3px;
+            width: 100%;
+            top: 0;
+            left: 0;
+          }
+
+          a {
+            padding: 0.4rem 0;
+            color: $white;
+            width: 100%;
+
+            &:hover {
+              color: $orange;
+            }
           }
         }
       }
-    }
 
-    &:hover .navLinksContainer {
-      display: block;
-      top: calc(1.8rem + 3vmin);
-      left: 0;
+      &:hover .navLinksContainer {
+        display: block;
+        top: calc(1.8rem + 3vmin);
+        left: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .navbarContainer {
+    width: 90vw;
+
+    .row {
+      .navbar {
+        a {
+          font-size: calc(0.5rem + 0.8vmin);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbarContainer {
+    flex-direction: column;
+    height: 100%;
+    gap: .5rem;
+    padding: .5rem 1rem;
+
+    .row {
+      width: 100%;
+
+      &:nth-child(1) {
+        width: 100%;
+      }
+
+      .navbar {
+        .navLinksContainer {
+          z-index: 2;
+
+          .navLinks {
+            padding: .5rem 1rem;
+
+            &::after {
+              height: 2px;
+            }
+
+            a {
+              padding: 0.2rem 0;
+
+              &:hover {
+                color: $orange;
+              }
+            }
+          }
+        }
+
+        &:hover .navLinksContainer {
+          top: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .navbarContainer {
+    width: 95vw;
+    gap: .3rem;
+    padding: .5rem .6rem;
+
+    .row {
+      gap: .5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .navbarContainer {
+    width: 95vw;
+    gap: .3rem;
+    padding: .5rem .6rem;
+
+    .row {
+      gap: .3rem;
+
+      .navbar {
+        a {
+          font-weight: 400;
+          font-size: calc(0.5rem + 0.5vmin);
+        }
+      }
     }
   }
 }
