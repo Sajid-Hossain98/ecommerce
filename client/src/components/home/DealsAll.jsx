@@ -13,7 +13,7 @@ const DealsAll = () => {
         <h1 className="headTag">All available deals</h1>
         {dealsData.data.map((deal) => {
           return (
-            <Link to={`${deal.id}`} className="dealsContainer">
+            <Link to={`${deal.id}`} key={deal.id} className="dealsContainer">
               <div className="image">
                 <img src={deal.imgUrls[0]} alt={deal.title} />
               </div>

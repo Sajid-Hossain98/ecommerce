@@ -34,12 +34,15 @@ import Cart from "../cart/Cart";
 import { selectCartProducts } from "../../redux/slice/cartSlice";
 import Search from "../search/Search";
 import { GiTakeMyMoney } from "react-icons/gi";
+import Sidebar from "./Sidebar";
+import SearchMini from "../search/SearchMini";
 
 const Hero = () => {
   // listening for scroll direction(up/down), if scrolling down then hiding the navbar and if scrolling up then showing the navbar
   const scrollDirection = useScrollDirection("down");
 
   const [open, setOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [currentUserName, setCurrentUserName] = useState("");
   const [currentUserContact, setCurrentUserContact] = useState("");
@@ -117,6 +120,41 @@ const Hero = () => {
     };
   }, [cartRef, setOpen]);
 
+  //to have the navbar close on mobile when swiping from left to right
+  const sidebarRef = useRef(null);
+  let startPosX = 0;
+
+  const handleTouchStart = (event) => {
+    startPosX = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (event) => {
+    const endPosX = event.changedTouches[0].clientX;
+    const deltaX = endPosX - startPosX;
+    const minSwipeDistance = 25;
+
+    if (deltaX > minSwipeDistance) {
+      // Swipe right
+      setIsMenuOpen(false);
+    } else if (deltaX < -minSwipeDistance) {
+      // Swipe left
+      setIsMenuOpen(true);
+    }
+  };
+
+  //adding a scroll listener to hide the sideNavBar whenever the user scrolls
+  const handleScroll = () => {
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
+
   return (
     <>
       {/* implementing the header section with logo, searchBar and other links */}
@@ -139,7 +177,7 @@ const Hero = () => {
             )}
 
             <div className="search">
-              <Search />
+              <Search isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             </div>
 
             <ul className="options">
@@ -207,9 +245,16 @@ const Hero = () => {
                 )}
               </li>
 
+              <SearchMini />
+
               <li ref={cartRef} className="cart">
                 <IconContext.Provider
-                  value={{ style: { color: "#FDFDFD", fontSize: "45px" } }}
+                  value={{
+                    style: {
+                      color: "#FDFDFD",
+                      fontSize: "40px",
+                    },
+                  }}
                 >
                   <Link onClick={() => setCartOpen(!cartOpen)}>
                     <FaCartArrowDown />
@@ -221,6 +266,30 @@ const Hero = () => {
                 {cartOpen && <Cart />}
               </li>
             </ul>
+            <div className="sidebar">
+              <button
+                className={`toggle-menu ${isMenuOpen ? "menu-open" : ""}`}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                <span className="hamburger"></span>
+              </button>
+
+              <div
+                className={`side-navBar ${isMenuOpen ? "nav-open" : ""}`}
+                ref={sidebarRef}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
+                <Sidebar
+                  isLoggedIn={isLoggedIn}
+                  userEmail={userEmail}
+                  userName={userName}
+                  adminEmail={adminEmail}
+                  isMenuOpen={isMenuOpen}
+                  setIsMenuOpen={setIsMenuOpen}
+                />
+              </div>
+            </div>
           </div>
         </div>
 

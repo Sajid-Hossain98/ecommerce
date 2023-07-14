@@ -52,6 +52,7 @@
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 0.5rem;
+      display: none;
 
       li {
         margin-top: 2rem;

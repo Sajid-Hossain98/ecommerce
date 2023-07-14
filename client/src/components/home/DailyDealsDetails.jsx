@@ -42,8 +42,8 @@ const DailyDealsDetails = () => {
               autoplay={{ delay: 3000 }}
             >
               {deal.imgUrls.map((url, index) => (
-                <SwiperSlide>
-                  <div className="image-swiper" key={index}>
+                <SwiperSlide key={index}>
+                  <div className="image-swiper">
                     <img src={deal.imgUrls[index]} alt={deal.title} />
                   </div>
                 </SwiperSlide>

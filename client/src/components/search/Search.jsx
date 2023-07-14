@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { GoSearch } from "react-icons/go";
 import useFirestoreCollection from "../../hooks/useFirestoreCollection";
 import { GrClose, GrFormClose } from "react-icons/gr";
@@ -36,7 +36,7 @@ const Search = () => {
 
   return (
     <>
-      <div className="search-field">
+      <div className="search-field-lg">
         <input
           type="text"
           name="search"
@@ -51,6 +51,7 @@ const Search = () => {
           <GoSearch className="search-icon" />
         )}
       </div>
+
       {wordsEntered.length > 0 ? (
         <div className="search-output">
           {filteredSearchData.length > 0 ? (

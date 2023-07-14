@@ -3,6 +3,23 @@ import { navLinks } from "../../assets/navLinks";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  // const [subMenuOpen, setSubMenuOpen] = useState(false);
+
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setWindowWidth(window.innerWidth);
+  //   };
+
+  //   window.addEventListener("resize", handleResize);
+
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //     console.log("cleaned");
+  //   };
+  // }, [windowWidth]);
+
   return (
     <>
       {/* <div className="navbarContainer">
@@ -43,7 +60,7 @@ const Navbar = () => {
 
       <div className="navbarContainer">
         <div className="row">
-          {navLinks.slice(0, 5).map((mainLink, index) => (
+          {navLinks.slice(0, 4).map((mainLink, index) => (
             <div key={index} className="navbar">
               <Link
                 to={
@@ -54,8 +71,21 @@ const Navbar = () => {
                     : null
                 }
               >
-                {mainLink.name}
+                {mainLink.subMenu ? (
+                  <p
+                  // onClick={() => setSubMenuOpen(!subMenuOpen)}
+                  >{`${mainLink.name} >`}</p>
+                ) : (
+                  <p>{mainLink.name}</p>
+                )}
               </Link>
+
+              {/* ${
+                  windowWidth < 1030 && subMenuOpen
+                    ? "navLinksContainer-sm"
+                    : ""
+                }`} */}
+
               <div className="navLinksContainer">
                 {mainLink.subMenu && (
                   <ul className="navLinks">
@@ -77,7 +107,7 @@ const Navbar = () => {
           ))}
         </div>
         <div className="row">
-          {navLinks.slice(5).map((mainLink, index) => (
+          {navLinks.slice(4).map((mainLink, index) => (
             <div key={index} className="navbar">
               <Link
                 to={
