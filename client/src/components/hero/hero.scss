@@ -233,6 +233,10 @@
         display: none;
       }
 
+      .search-output-sm {
+        display: none;
+      }
+
       //!styles for the cart component
       .cart {
         color: $black;
@@ -608,6 +612,82 @@
               padding: calc(5px + 2vmin) calc(3px + 1.5vmin);
               transition: .5s linear;
             }
+
+            .search-icon {
+              position: absolute;
+              right: 8%;
+              height: 100%;
+              cursor: pointer;
+
+              &:hover {
+                color: $grey;
+              }
+            }
+          }
+        }
+
+        .search-output-sm {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          position: absolute;
+          width: 90%;
+          top: 100%;
+          left: 0%;
+          right: 0%;
+          margin: auto;
+          margin-top: 3rem;
+          padding: 1rem 1rem;
+          background-color: rgba($color: $clr_primary_1, $alpha: 1);
+          overflow-y: scroll;
+          z-index: 9;
+
+          .searchedProduct-sm {
+            display: flex;
+            align-items: flex-start;
+            color: $white;
+            justify-content: space-between;
+            gap: 1.5rem;
+            height: 100%;
+
+            .searchImage-sm {
+              img {
+                height: 4rem;
+                width: 4rem;
+                object-fit: contain;
+              }
+            }
+
+            .searchContent-sm {
+              h4 {
+                font-weight: 500;
+                font-size: calc(2px + 1.5vmin);
+              }
+
+              .brand {
+                font-weight: bold;
+                color: $grey;
+                font-size: calc(2px + 1.2vmin);
+              }
+
+              .prices {
+                display: flex;
+                gap: .5rem;
+
+                p {
+                  font-size: calc(2px + 1vmin);
+
+                  &:nth-child(1) {
+                    text-decoration: line-through red;
+                  }
+
+                  &:nth-child(2) {
+                    text-decoration: underline greenyellow;
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -789,6 +869,10 @@
               font-size: calc(5px + 3vmin);
             }
           }
+        }
+
+        .search-output-sm {
+          margin-top: 2.5rem;
         }
 
         .cart {
