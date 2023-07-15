@@ -609,7 +609,7 @@
               outline: none;
               border-radius: 0;
               color: $white;
-              padding: calc(5px + 2vmin) calc(3px + 1.5vmin);
+              padding: 2.1rem 1rem;
               transition: .5s linear;
             }
 
@@ -853,6 +853,14 @@
             width: 50vw;
           }
         }
+
+        .search-field-sm {
+          .searchBar-sm {
+            input[type="text"] {
+              padding: 2rem .5rem;
+            }
+          }
+        }
       }
 
     }
@@ -867,6 +875,14 @@
           &:last-child {
             .quantityCount {
               font-size: calc(5px + 3vmin);
+            }
+          }
+        }
+
+        .search-field-sm {
+          .searchBar-sm {
+            input[type="text"] {
+              padding: 1.5rem .5rem;
             }
           }
         }
