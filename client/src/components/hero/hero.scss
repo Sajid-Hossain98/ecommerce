@@ -641,7 +641,7 @@
           left: 0%;
           right: 0%;
           margin: auto;
-          margin-top: 3rem;
+          margin-top: 4.5rem;
           padding: 1rem 1rem;
           background-color: rgba($color: $clr_primary_1, $alpha: 1);
           overflow-y: scroll;
@@ -826,7 +826,8 @@
                       color: $white;
                       font-size: calc(8px + 1.8vmin);
                       font-weight: 600;
-                      text-decoration: underline $orange;
+                      text-decoration: underline;
+                      text-decoration-color: $orange;
                       padding: .2rem 0;
                     }
                   }
@@ -923,7 +924,7 @@
         }
 
         .search-output-sm {
-          margin-top: 2.5rem;
+          margin-top: 3.5rem;
         }
 
         .cart {

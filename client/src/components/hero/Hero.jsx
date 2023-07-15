@@ -144,7 +144,7 @@ const Hero = () => {
 
   //adding a scroll listener to hide the sideNavBar whenever the user scrolls
   const handleScroll = () => {
-    // setIsMenuOpen(false);
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
