@@ -34,6 +34,10 @@
         color: $grey;
       }
 
+      &:focus a {
+        color: $white;
+      }
+
       a {
         color: $white;
         font-size: calc(0.5rem + 1.2vmin);
@@ -157,6 +161,7 @@
 
 @media screen and (max-width: 425px) {
   .navbarContainer {
+    margin: .5rem auto;
     gap: .3rem;
     padding: .5rem .6rem;
 
