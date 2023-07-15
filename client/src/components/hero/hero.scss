@@ -839,16 +839,14 @@
             }
 
             .logout {
-              position: fixed;
-              bottom: 0;
               display: flex;
               align-items: center;
               justify-content: center;
               gap: .2rem;
-              font-size: calc(5px + 1.8vmin);
+              font-size: calc(10px + 2vmin);
               font-weight: 500;
               background-color: rgba($color: $orange, $alpha: 0.65);
-              padding: 0.5rem 0;
+              padding: 0.3rem 0;
               cursor: pointer;
             }
           }
