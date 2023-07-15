@@ -34,7 +34,7 @@ const Cart = () => {
   return (
     <>
       {isLoggedIn ? (
-        <div className="cart-container">
+        <div className="cart-container animate__animated animate__headShake animate__faster">
           <h4>{CurrentUserName}'s cart</h4>
 
           {cartProductsForCurrentUser &&

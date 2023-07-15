@@ -1,6 +1,7 @@
 import { FaIdeal } from "react-icons/fa";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { GrUserAdmin } from "react-icons/gr";
+import { IoMdLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const Sidebar = ({
@@ -10,6 +11,7 @@ const Sidebar = ({
   adminEmail,
   isMenuOpen,
   setIsMenuOpen,
+  logoutUser,
 }) => {
   return (
     <>
@@ -76,6 +78,13 @@ const Sidebar = ({
             </Link>
           </li>
         )}
+
+        {isLoggedIn ? (
+          <li className="logout" onClick={logoutUser}>
+            <IoMdLogOut />
+            Logout
+          </li>
+        ) : null}
       </ul>
     </>
   );

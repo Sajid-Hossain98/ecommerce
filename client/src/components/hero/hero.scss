@@ -302,7 +302,7 @@
                 img {
                   width: 80px;
                   height: 90px;
-                  object-fit: cover;
+                  object-fit: contain;
                 }
               }
 
@@ -556,8 +556,6 @@
         display: none;
       }
 
-
-
       .options {
         width: 100%;
         justify-content: flex-end;
@@ -574,6 +572,12 @@
               width: 1.2rem;
               font-size: calc(5px + 1.5vmin);
             }
+          }
+        }
+
+        .cart {
+          .cart-container {
+            width: 60vw;
           }
         }
 
@@ -748,7 +752,7 @@
 
         .side-navBar {
           width: 100vw;
-          height: 100vh;
+          height: 92.2vh;
           background-color: $clr_primary_2;
           padding: 1rem 0 0rem;
           position: absolute;
@@ -833,6 +837,20 @@
                 }
               }
             }
+
+            .logout {
+              position: fixed;
+              bottom: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: .2rem;
+              font-size: calc(5px + 1.8vmin);
+              font-weight: 500;
+              background-color: rgba($color: $orange, $alpha: 0.65);
+              padding: 0.5rem 0;
+              cursor: pointer;
+            }
           }
         }
 
@@ -849,6 +867,25 @@
     .content {
       .options {
         .cart {
+          .cart-container {
+            width: 60vw;
+
+            .contentAndDeleteBtn {
+              padding: 0 .5rem;
+
+              .cartContent {
+                gap: .5rem;
+
+                .image {
+                  img {
+                    width: 85px;
+                    height: 65px;
+                  }
+                }
+              }
+            }
+          }
+
           .notLoggedInCart {
             width: 50vw;
           }
@@ -892,8 +929,28 @@
         }
 
         .cart {
+          .cart-container {
+            width: 85vw;
+            right: -60%;
+
+            .contentAndDeleteBtn {
+              padding: 0 .5rem;
+
+              .cartContent {
+                gap: .5rem;
+
+                .image {
+                  img {
+                    width: 85px;
+                    height: 65px;
+                  }
+                }
+              }
+            }
+          }
+
           .notLoggedInCart {
-            width: 60vw;
+            width: 80vw;
 
             .notLogged {
               font-size: 15px;

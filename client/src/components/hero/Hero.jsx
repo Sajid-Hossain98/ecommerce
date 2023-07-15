@@ -144,7 +144,7 @@ const Hero = () => {
 
   //adding a scroll listener to hide the sideNavBar whenever the user scrolls
   const handleScroll = () => {
-    setIsMenuOpen(false);
+    // setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -268,7 +268,9 @@ const Hero = () => {
             </ul>
             <div className="sidebar">
               <button
-                className={`toggle-menu ${isMenuOpen ? "menu-open" : ""}`}
+                className={`toggle-menu ${
+                  isMenuOpen ? "menu-open" : ""
+                } animate__animated animate__lightSpeedInRight animate__faster`}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 <span className="hamburger"></span>
@@ -287,6 +289,7 @@ const Hero = () => {
                   adminEmail={adminEmail}
                   isMenuOpen={isMenuOpen}
                   setIsMenuOpen={setIsMenuOpen}
+                  logoutUser={logoutUser}
                 />
               </div>
             </div>
