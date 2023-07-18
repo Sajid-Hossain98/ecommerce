@@ -49,6 +49,7 @@
           border: none;
           outline: none;
           box-shadow: $dark_shadow;
+          background-color: $white;
           border-radius: $light_border_radius;
           padding: 0.8rem 1rem;
           font-size: calc(0.5rem + 1.2vmin);
@@ -81,6 +82,7 @@
         border: none;
         outline: none;
         box-shadow: $dark_shadow;
+        background-color: $white;
         border-radius: $light_border_radius;
         padding: 0.8rem 1rem;
         font-size: calc(0.5rem + 1.2vmin);
@@ -90,6 +92,10 @@
     .formContact {
       @include numberInput;
       @extend .formEmail;
+
+      input[type="number"] {
+        background-color: $white;
+      }
 
       .no-spin::-webkit-inner-spin-button,
       .no-spin::-webkit-outer-spin-button {
@@ -107,6 +113,7 @@
         border: none;
         outline: none;
         box-shadow: $dark_shadow;
+        background-color: $white;
         border-radius: $light_border_radius;
         padding: 0.8rem 1rem;
         font-size: calc(0.5rem + 1.2vmin);
