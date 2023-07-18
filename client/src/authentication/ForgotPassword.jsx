@@ -52,7 +52,7 @@ const ForgotPassword = () => {
             <button type="submit">Reset Password</button>
             <p>
               <span>*</span>
-              an email will be sent your email address using which you've
+              an email will be sent to your email address using which you've
               registered.
             </p>
           </div>
