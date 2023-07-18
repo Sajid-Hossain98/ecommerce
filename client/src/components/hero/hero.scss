@@ -6,7 +6,6 @@
   width: 100vw;
   background-color: $clr_primary_2;
   position: relative;
-  // overflow-x: auto;
 
   .content {
     width: 85%;
@@ -533,18 +532,22 @@
   }
 }
 
-.sticky {
-  position: sticky;
-  top: 0;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 400ms;
-  z-index: 1;
+@media screen and (min-width: 768px) {
+  .sticky {
+    position: sticky;
+    top: 0;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 400ms;
+    z-index: 1;
+  }
+
+  .hide {
+    top: -20rem;
+  }
 }
 
-.hide {
-  top: -20rem;
-}
+
 
 @media screen and (max-width: 1030px) {
   .heroContainer {
@@ -683,11 +686,13 @@
                   font-size: calc(2px + 1vmin);
 
                   &:nth-child(1) {
-                    text-decoration: line-through red;
+                    text-decoration: line-through;
+                    text-decoration-color: red;
                   }
 
                   &:nth-child(2) {
-                    text-decoration: underline greenyellow;
+                    text-decoration: underline;
+                    text-decoration-color: greenyellow;
                   }
                 }
               }

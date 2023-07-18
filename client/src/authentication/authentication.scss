@@ -7,6 +7,7 @@
   flex-direction: column;
   color: $black;
   width: 100vw;
+  margin-bottom: 2rem;
 
   h2 {
     font-size: calc(1.2rem + 2vmin);
@@ -138,7 +139,7 @@
   }
 }
 
-//style for login page
+//styles for login page
 .login {
   width: 100%;
   display: flex;
@@ -308,14 +309,50 @@
       }
 
       p {
-        font-size: calc(1px + 1.1vmin);
+        font-size: calc(3px + 1.1vmin);
         text-align: center;
         padding: 0.5rem 0;
 
         span {
-          font-size: calc(1px + 1.5vmin);
+          font-size: calc(2px + 1.5vmin);
           color: red;
         }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .register {
+    .content {
+      width: 90%;
+      gap: .8rem;
+
+      .formForName {
+        flex-direction: column;
+
+        .firstName {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .login {
+    overflow: hidden;
+
+    .content {
+      width: 90%;
+    }
+  }
+
+  .forgotPassword {
+    .content {
+      width: 90%;
+
+      .backBtn {
+        margin-top: 1rem;
       }
     }
   }
