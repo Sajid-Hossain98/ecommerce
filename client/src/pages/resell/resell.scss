@@ -45,6 +45,14 @@
         border: 1px solid $clr_primary_1;
         padding: .5rem 1rem;
       }
+
+      .notLoggedIn {
+        border: 1px solid $clr_red_light;
+
+        &::before {
+          background-color: $clr_red_light;
+        }
+      }
     }
   }
 

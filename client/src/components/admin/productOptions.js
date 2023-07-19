@@ -9,7 +9,6 @@ export const options = [
   { value: "Chassis", label: "Chassis" },
   { value: "Case Fan", label: "Case Fan" },
   { value: "Laptop", label: "Laptop" },
-  { value: "Laptop", label: "Laptop" },
   { value: "Printer", label: "Printer" },
   { value: "Monitor", label: "Monitor" },
   { value: "Networking", label: "Networking" },

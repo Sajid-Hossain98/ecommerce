@@ -3,10 +3,14 @@ import { Link, useSearchParams } from "react-router-dom";
 import useFirestoreCollection from "../../hooks/useFirestoreCollection";
 import Loader from "../../components/loader/Loader";
 import { options } from "../../components/admin/productOptions";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/slice/authSlice";
 
 const Resell = () => {
   const [searchParams] = useSearchParams();
   const resellDataCollection = useFirestoreCollection("resells");
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const categoryFilter = searchParams.get("category");
 
@@ -27,9 +31,15 @@ const Resell = () => {
           <div className="titleAndSellBtn">
             <h1>Resells</h1>
             <span>used items being sold by our customers</span>
-            <Link to="sellProductUpload">
-              <button className="resellBtn">Sell an item</button>
-            </Link>
+            {isLoggedIn ? (
+              <Link to="sellProductUpload">
+                <button className="resellBtn">Sell an item</button>
+              </Link>
+            ) : (
+              <Link>
+                <button className="resellBtn notLoggedIn">Login to sell</button>
+              </Link>
+            )}
           </div>
 
           <div className="filterResellItems">

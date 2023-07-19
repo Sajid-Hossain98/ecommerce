@@ -158,7 +158,7 @@ const ProductDetails = () => {
                 ) : (
                   <Link to="/login">
                     <button className="loginToAddToCart">
-                      Login to Add to cart / Buy
+                      Login to add to cart / Buy
                     </button>
                   </Link>
                 )}

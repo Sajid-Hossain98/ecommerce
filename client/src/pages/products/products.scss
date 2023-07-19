@@ -374,9 +374,13 @@
             margin-top: 5px;
             padding: 0.5rem 2rem;
             font-size: calc(3px + 2vmin);
-            border: 1px solid $clr_grey_1;
+            border: 1px solid $clr_red_light;
             border-radius: $light_border_radius;
             z-index: 0;
+
+            &::before {
+              background-color: $clr_red_light;
+            }
           }
         }
       }
