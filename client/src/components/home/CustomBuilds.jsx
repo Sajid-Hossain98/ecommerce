@@ -21,6 +21,7 @@ const CustomBuilds = ({ whichCustomBuild }) => {
     slidesToShow: 4,
     slidesToScroll: 4,
     swipeToSlide: true,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -44,7 +45,7 @@ const CustomBuilds = ({ whichCustomBuild }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          autoplay: true,
+          arrows: false,
         },
       },
     ],

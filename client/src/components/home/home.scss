@@ -145,11 +145,13 @@
                 font-weight: 500;
 
                 .normalPrice {
-                  text-decoration: line-through red;
+                  text-decoration: line-through;
+                  text-decoration-color: red;
                 }
 
                 .specialPrice {
-                  text-decoration: underline $clr_green_dark;
+                  text-decoration: underline;
+                  text-decoration-color: $clr_green_dark;
                 }
               }
             }
@@ -231,6 +233,24 @@
         .heading-2 {
           margin: 1rem 0;
         }
+
+        .slick-slide {
+          .grid-div {
+            .border {
+              .content {
+                height: calc(4rem + 2vmin);
+
+                .productName {
+                  font-size: calc(3px + 1.5vmin);
+                }
+
+                .price {
+                  font-size: calc(3px + 1vmin);
+                }
+              }
+            }
+          }
+        }
       }
 
       .heading-3 {
@@ -254,6 +274,26 @@
 
               span {
                 font-size: calc(3px + 1.5vmin);
+              }
+            }
+          }
+        }
+      }
+
+      .custom-build {
+        .slick-slide {
+          .grid-div {
+            .border {
+              .content {
+                height: calc(3rem + 2vmin);
+
+                .productName {
+                  font-size: calc(5px + 1.5vmin);
+                }
+
+                .price {
+                  font-size: calc(3px + 1.5vmin);
+                }
               }
             }
           }
