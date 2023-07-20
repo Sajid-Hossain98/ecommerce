@@ -3,14 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
-import { GoSearch } from "react-icons/go";
-import { MdOutlineBuildCircle, MdOutlineSettingsSuggest } from "react-icons/md";
-import {
-  RiUserFill,
-  RiAccountPinCircleLine,
-  RiArrowDownSLine,
-  RiArrowRightSLine,
-} from "react-icons/ri";
+import { RiAccountPinCircleLine } from "react-icons/ri";
 import { GrUserAdmin } from "react-icons/gr";
 import { FaCartArrowDown, FaIdeal } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
@@ -176,9 +169,9 @@ const Hero = () => {
               </div>
             )}
 
-            <div className="search">
+            <li className="search">
               <Search isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-            </div>
+            </li>
 
             <ul className="options">
               <li>

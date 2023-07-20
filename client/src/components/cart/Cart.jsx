@@ -99,7 +99,7 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <div className="notLoggedInCart">
+        <div className="notLoggedInCart animate__animated animate__shakeX animate__faster">
           <span className="notLogged">You are not logged in!</span>
           <i>
             <BiLogInCircle />
