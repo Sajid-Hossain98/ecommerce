@@ -19,7 +19,7 @@ const DealsAll = () => {
               </div>
             </Link>
           );
-        })}{" "}
+        })}
       </div>
     </>
   );

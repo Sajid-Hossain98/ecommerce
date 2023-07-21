@@ -22,14 +22,6 @@ const Deals = () => {
 
   const { title, description, images } = dealFormData;
 
-  const endDate = new Date(endingDate);
-
-  const dayDiffInMs = endDate.getTime() - new Date();
-
-  const aDayInMs = 24 * 60 * 60 * 1000;
-
-  const dayDiff = Math.round(dayDiffInMs / aDayInMs);
-
   const handleDealChange = (e) => {
     if (e.target.files) {
       setDealFormData((prev) => ({
