@@ -164,25 +164,16 @@
               .productPrice {
                 font-size: calc(1px + 1.3vmin);
                 color: $clr_grey_5;
-                text-decoration: line-through red;
+                text-decoration: line-through;
+                text-decoration-color: red;
               }
 
               .specialPrice {
                 font-size: calc(1px + 1.3vmin);
                 font-weight: 500;
-                text-decoration: underline green;
+                text-decoration: underline;
+                text-decoration-color: green;
               }
-            }
-
-            .productPrice {
-              font-size: calc(1px + 1.1vmin);
-              text-decoration: line-through red;
-            }
-
-            .specialPrice {
-              font-size: calc(1px + 1.3vmin);
-              font-weight: 500;
-              text-decoration: underline green;
             }
 
             .brandName {
@@ -442,6 +433,64 @@
 
           &:nth-child(2) {
             font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 1030px) {
+  .products {
+    .products-container {
+      width: 90%;
+
+      .products-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .products {
+    .products-container {
+      .products-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .products {
+    .products-container {
+      .products-list {
+        grid-template-columns: repeat(1, 1fr);
+
+        .product {
+          max-height: 20rem;
+
+          a {
+            .content {
+              padding: .4rem .5rem;
+              padding-bottom: 0 !important;
+
+              .productName {
+                font-size: calc(5px + 1.5vmin);
+              }
+
+              .price {
+                .productPrice {
+                  font-size: calc(3px + 1.5vmin);
+                }
+
+                .specialPrice {
+                  font-size: calc(3px + 1.5vmin);
+                }
+              }
+            }
           }
         }
       }

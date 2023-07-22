@@ -559,6 +559,10 @@
         display: none;
       }
 
+      .admin {
+        display: none;
+      }
+
       .options {
         width: 100%;
         justify-content: flex-end;
@@ -768,6 +772,10 @@
 
           .sideNav-user {
             width: 100%;
+
+            .admin-sm {
+              background-color: $clr_red_light;
+            }
 
             li {
               width: 100%;
