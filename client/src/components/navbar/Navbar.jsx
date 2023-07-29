@@ -63,12 +63,6 @@ const Navbar = () => {
                 )}
               </Link>
 
-              {/* ${
-                  windowWidth < 1030 && subMenuOpen
-                    ? "navLinksContainer-sm"
-                    : ""
-                }`} */}
-
               <div className="navLinksContainer">
                 {mainLink.subMenu && (
                   <ul className="navLinks">
